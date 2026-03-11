@@ -1,4 +1,4 @@
-name = "ellel-oversize"
+name = "final"
 compatibility_date = "2024-09-25"
 main = "worker/index.js"
 
@@ -8,4 +8,4 @@ directory = "./"
 [[d1_databases]]
 binding = "DB"
 database_name = "ellel-db"
-database_id = "local-db-id"
+database_id = "4d8e2ec6-e83a-4f64-94a1-e7369dad88d3"
