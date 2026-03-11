@@ -310,6 +310,7 @@ function setupAuthInteractions() {
         setTimeout(() => setAuthMode('register'), 50);
     });
 
+    // ── Open / Close Modal (Direct bindings and delegation) ───────
     const loginTriggerElements = [
         '#cart-login-banner',
         '#cart-login-banner-filled',
@@ -317,16 +318,33 @@ function setupAuthInteractions() {
         '#header-login-btn'
     ];
 
+    // Direct binding for the main header button for extra reliability
+    const mainLoginBtn = document.getElementById('header-login-btn');
+    if (mainLoginBtn) {
+        mainLoginBtn.onclick = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Ellel Auth [Catalog]: Direct click on header-login-btn');
+            openAuthModal();
+            setTimeout(() => {
+                try { setAuthMode('login'); } catch (err) { console.error('Auth mode error:', err); }
+            }, 50);
+        };
+    }
+
     document.addEventListener('click', (e) => {
         const trigger = loginTriggerElements.map(s => e.target.closest(s)).find(el => el !== null);
 
         if (trigger) {
+            // If it was the main button, it's already handled by onclick (avoid double trigger)
+            if (trigger.id === 'header-login-btn' && mainLoginBtn) return;
+
             e.preventDefault();
             e.stopPropagation();
-            console.log('Ellel Auth [Catalog]: Opening modal');
+            console.log('Ellel Auth [Catalog]: Opening modal from delegation:', trigger.id || trigger.className);
             openAuthModal();
             setTimeout(() => {
-                try { setAuthMode('login'); } catch (err) { console.error(err); }
+                try { setAuthMode('login'); } catch (err) { console.error('Auth mode error:', err); }
             }, 50);
             return;
         }
