@@ -160,7 +160,8 @@ function setupAuthInteractions() {
     }
 
     document.addEventListener('click', (e) => {
-        const trigger = loginTriggerElements.map(s => e.target.closest(s)).find(el => el !== null);
+        const trigger = e.target.closest('.cart-login-trigger') || 
+                        loginTriggerElements.map(s => e.target.closest(s)).find(el => el !== null);
 
         if (trigger) {
             // If it was the main button, it's already handled by onclick (avoid double trigger)

@@ -17,7 +17,7 @@ export const MiniCart = () => {
                         <!-- Login / User Banner dentro del estado vacío -->
                         <div id="cart-login-banner" style="margin-bottom: 1.5rem;">
                             <p style="font-size: 0.95rem; color: #333; font-weight: 500; text-align: center;">
-                                ¿Tienes una cuenta? <span id="cart-login-trigger" style="color: #902126; text-decoration: underline; cursor: pointer; font-weight: 700;">Inicia sesión</span> para pagar más rápido.
+                                ¿Tienes una cuenta? <span class="cart-login-trigger" id="cart-login-trigger" style="color: #902126; text-decoration: underline; cursor: pointer; font-weight: 700;">Inicia sesión</span> para pagar más rápido.
                             </p>
                         </div>
 
@@ -38,9 +38,9 @@ export const MiniCart = () => {
                     <div class="cart-filled-state" id="cart-filled-state" style="display: none;">
                         <!-- Login / User Banner dentro del estado lleno -->
                         <div class="cart-filled-auth" style="padding: 12px 20px 0;">
-                            <div id="cart-login-banner-filled" style="background: #fafafa; border: 1.5px solid #ececec; border-radius: 10px; padding: 10px 14px; cursor: pointer; display: flex; align-items: center; gap: 10px;">
+                            <div id="cart-login-banner-filled" class="cart-login-trigger" style="background: #fafafa; border: 1.5px solid #ececec; border-radius: 10px; padding: 10px 14px; cursor: pointer; display: flex; align-items: center; gap: 10px;">
                                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#902126" stroke-width="2.5" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                                <span style="font-size: 0.8rem; color: #333; font-weight: 500;">¿Tienes cuenta? <span style="color: #902126; font-weight: 700; text-decoration: underline;">Inicia sesión</span> para pagar más rápido.</span>
+                                <span style="font-size: 0.8rem; color: #333; font-weight: 500;">¿Tienes cuenta? <span class="cart-login-trigger" style="color: #902126; font-weight: 700; text-decoration: underline;">Inicia sesión</span> para pagar más rápido.</span>
                             </div>
                             <div id="cart-user-banner-filled" style="display:none; background: #fafafa; border: 1.5px solid #ececec; border-radius: 10px; padding: 10px 14px; display:none; align-items: center; gap: 10px;">
                                 <!-- Content injected by auth.js -->

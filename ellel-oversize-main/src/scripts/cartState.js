@@ -122,7 +122,7 @@ export async function updateQty(id, newQty) {
     }
 }
 
-export function renderCart() {
+export async function renderCart() {
     const emptyState = document.getElementById('cart-empty-state');
     const filledState = document.getElementById('cart-filled-state');
     const itemsWrapper = document.getElementById('cart-items-wrapper');
@@ -173,6 +173,12 @@ export function renderCart() {
             attachItemEvents();
         }
     }
+
+    // Always ensure auth UI is synced after render
+    try {
+        const { updateCartAuthUI, getUser } = await import('./auth.js');
+        updateCartAuthUI(getUser());
+    } catch (e) { console.warn('Auth sync failed in renderCart'); }
 }
 
 function attachItemEvents() {

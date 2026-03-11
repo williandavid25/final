@@ -110,10 +110,11 @@ export function updateCartAuthUI(user) {
     const loginBannerFilled = document.getElementById('cart-login-banner-filled');
     const userBannerFilled = document.getElementById('cart-user-banner-filled');
 
+    const userName = user ? (user.nombre || user.name || user.email || 'Usuario') : '';
     const userProfileHtml = user ? `
-        <img src="${user.picture || ''}" alt="Avatar" style="width: 38px; height: 38px; border-radius: 50%; border: 2.5px solid #902126; object-fit: cover; flex-shrink: 0;">
+        <img src="${user.picture || './src/assets/img/avatar-placeholder.png'}" alt="Avatar" style="width: 38px; height: 38px; border-radius: 50%; border: 2.5px solid #902126; object-fit: cover; flex-shrink: 0;">
         <div style="flex-grow: 1; min-width: 0;">
-            <span style="font-weight: 800; font-size: 0.85rem; color: #000; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${user.name}</span>
+            <span style="font-weight: 800; font-size: 0.85rem; color: #000; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${userName}</span>
             <span style="font-size: 0.72rem; color: #666; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${user.email}</span>
         </div>
         <button id="cart-signout-btn" style="flex-shrink: 0; background: #f0f0f0; border: none; padding: 5px 10px; border-radius: 8px; font-weight: 700; font-size: 0.68rem; cursor: pointer; color: #444; text-transform: uppercase;">Salir</button>
@@ -138,6 +139,15 @@ export function updateCartAuthUI(user) {
             userBannerFilled.innerHTML = userProfileHtml;
         }
     }
+
+    // Attach signout listener to BOTH possible signout buttons in cart
+    const signoutBtns = document.querySelectorAll('#cart-signout-btn');
+    signoutBtns.forEach(btn => {
+        btn.onclick = (e) => {
+            e.preventDefault();
+            signOut();
+        };
+    });
 }
 
 // ── Header Avatar ────────────────────────────────────────────────
