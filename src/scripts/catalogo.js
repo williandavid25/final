@@ -126,21 +126,71 @@ function buildFilterChips(products, activeCat, activeGen) {
 
     container.innerHTML = chipsConfig.map(chip => {
         const isActive = (chip.cat === activeCat && chip.gen === activeGen) ? 'active' : '';
-        const extra    = chip.gen ? `gender-chip active-${chip.gen || ''}` : '';
-        return `<button class="chip ${extra} ${isActive}" data-cat="${chip.cat || ''}" data-gen="${chip.gen || ''}">${chip.label}</button>`;
+        return `<button class="chip ${isActive}" data-cat="${chip.cat || ''}" data-gen="${chip.gen || ''}">${chip.label}</button>`;
     }).join('');
 
     container.querySelectorAll('.chip').forEach(chip => {
         chip.addEventListener('click', (e) => {
-            container.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
-            e.target.classList.add('active');
+            const btn = e.target;
+            if (btn.classList.contains('active')) return;
 
-            const cat = e.target.dataset.cat || null;
-            const gen = e.target.dataset.gen || null;
+            // Ripple/Glow Animation with brand colors
+            btn.classList.add('animating');
+            
+            // GSAP Timeline for professional feel
+            const tl = gsap.timeline({
+                onComplete: () => btn.classList.remove('animating')
+            });
+
+            tl.to(btn, { 
+                scale: 0.92, 
+                duration: 0.1, 
+                ease: "power2.in" 
+            })
+            .to(btn, { 
+                scale: 1.08, 
+                backgroundColor: "#FEBD01", // Brand Yellow
+                color: "#000",
+                duration: 0.3, 
+                ease: "back.out(3)" 
+            })
+            .to(btn, { 
+                scale: 1, 
+                backgroundColor: "#000", 
+                color: "#fff",
+                duration: 0.4, 
+                ease: "power2.out"
+            });
+
+            // Remove active from others
+            container.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+            // Add to current
+            btn.classList.add('active');
+
+            const cat = btn.dataset.cat || null;
+            const gen = btn.dataset.gen || null;
             const sort = document.getElementById('sort-select').value;
 
             updateHero(cat, gen);
-            renderProducts(applyFilters(products, cat, gen, sort));
+            
+            // Animate grid items entry
+            const filteredProducts = applyFilters(products, cat, gen, sort);
+            renderProducts(filteredProducts);
+
+            // GSAP Stagger animation for new products with a slight rotation/scale
+            gsap.from(".product-card", {
+                y: 50,
+                scale: 0.95,
+                rotationX: 10,
+                opacity: 0,
+                duration: 0.8,
+                stagger: {
+                    each: 0.08,
+                    from: "start"
+                },
+                ease: "expo.out",
+                clearProps: "all"
+            });
 
             // Update URL without reload
             const url = new URL(window.location);
