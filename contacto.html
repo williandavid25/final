@@ -25,18 +25,19 @@
     <!-- El fondo gris muy claro se define en base.css o en línea para esta página -->
     <style>
         body.bg-light-gray { background-color: #f8f8f8; }
+        .contact-page-container { padding-top: 140px !important; } /* Added for logo clearance */
     </style>
 
     <div id="app">
         
         <!-- Header Identico, pero con iconos actualizados según el screenshot (lupa, carrito lleno, menu lineas) -->
-        <header id="main-header" class="header no-transparent">
+        <header id="main-header" class="header scrolled">
             <div class="header-container container">
                 <a href="index.html" class="logo-link">
                     <img src="./src/assets/img/logo-square.png" alt="Ellel Oversize Logo">
                     <div class="logo-text-wrapper">
-                        <span class="logo-text" style="font-size: 1.5rem; color: #000;">Ellel Oversize</span>
-                        <div class="logo-underline" style="background-color: #ffcc00; height: 4px;"></div>
+                        <span class="logo-text">Ellel Oversize</span>
+                        <div class="logo-underline"></div>
                     </div>
                 </a>
                 
@@ -46,7 +47,7 @@
                     </button>
                     <button class="icon-btn cart-btn" aria-label="Carrito" id="open-cart-btn-main">
                         <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
-                        <span class="cart-badge" style="background: red; color: white;">0</span>
+                        <span class="cart-badge">0</span>
                     </button>
                     <button class="icon-btn menu-btn-mobile" aria-label="Menú" id="open-menu-btn">
                         <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2.5" fill="none"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>

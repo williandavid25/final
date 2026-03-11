@@ -3,11 +3,11 @@
 @media (max-width: 768px) {
     /* Responsive Logo scaling to prevent breaking header on phones */
     .logo-link img {
-        height: 60px !important; /* Scale down the giant laptop logo for mobile */
+        height: 90px !important; /* Made significantly larger as requested */
     }
     
     .logo-text {
-        font-size: 1.4rem !important;
+        font-size: 1.2rem !important; /* Slightly smaller to emphasize the logo image more */
     }
     
     .logo-link {
@@ -113,13 +113,32 @@
     .mobile-link {
         font-family: var(--font-heading);
         font-weight: 900;
-        font-size: 2.2rem; /* Tamaño gigante tipo cartel */
+        font-size: 1.4rem; /* Reduced from 2.2rem for better aesthetics */
         color: #000;
         text-decoration: none;
         letter-spacing: 0.05em;
         text-transform: uppercase;
-        display: block;
+        display: inline-block; /* Changed to inline-block for underline sizing */
+        padding-bottom: 4px;
+        position: relative;
         text-align: center;
+    }
+
+    /* Yellow line animation requested by user */
+    .mobile-link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 3px;
+        background-color: var(--color-accent-yellow);
+        transition: width 0.3s ease;
+    }
+
+    .mobile-link:active::after,
+    .mobile-link:focus::after {
+        width: 100%;
     }
 
     .has-submenu {
@@ -140,11 +159,30 @@
     .mobile-sublink {
         font-family: var(--font-heading);
         font-weight: 800;
-        font-size: 1.5rem; /* Tamaño mediano pero muy bold */
-        color: #555; /* Gris intermedio del diseño */
+        font-size: 1.1rem; /* Proportional reduction */
+        color: #555; 
         text-decoration: none;
         text-transform: uppercase;
         letter-spacing: 0.05em;
-        display: block;
+        display: inline-block;
+        position: relative;
+        padding-bottom: 2px;
         text-align: center;
     }
+
+    .mobile-sublink::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--color-accent-yellow);
+        transition: width 0.3s ease;
+    }
+
+    .mobile-sublink:active::after,
+    .mobile-sublink:focus::after {
+        width: 100%;
+    }
+}

@@ -162,7 +162,7 @@ button, input, select, textarea {
     min-height: 500px;
     overflow: hidden;
     display: flex;
-    align-items: flex-end;  /* Content sits near bottom — cinematic */
+    align-items: center; /* Changed from flex-end to center for better balance with shorter height */
 }
 
 /* The video itself — always covers full section */
@@ -195,7 +195,8 @@ button, input, select, textarea {
 .video-hero__content {
     position: relative;
     z-index: 2;
-    padding-bottom: clamp(3rem, 8vh, 5rem);
+    padding-top: 120px; /* Safety area to avoid touching the logo */
+    padding-bottom: 2rem;
     width: 100%;
 }
 

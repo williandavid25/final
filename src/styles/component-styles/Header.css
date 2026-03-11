@@ -12,14 +12,20 @@
     background: rgba(246, 245, 248, 0.95);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
-    padding: 0.4rem 0; /* Acolchado ultra delgado al hacer scroll */
+    padding: 0.2rem 0; /* Ultra thin on scroll */
     box-shadow: 0 4px 30px rgba(0,0,0,0.05);
     border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
-/* Reducción dramática del logo al hacer scroll */
+@keyframes logoFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-5px) rotate(-2deg); }
+    75% { transform: translateY(-5px) rotate(2deg); }
+}
+
+/* Reducción suave del logo al hacer scroll, manteniendo legibilidad */
 .header.scrolled .logo-link img {
-    height: 76px; /* Bigger on all pages — applies to nosotros, contacto, etc. */
+    height: 75px; /* Proportional reduction */
 }
 
 .header.scrolled .logo-text {
@@ -45,15 +51,16 @@
 }
 
 .logo-link img {
-    height: 110px; /* Prominent icon matching Ellel text */
+    height: 110px; /* Reduced from 140px to prevent encroaching on content below */
     object-fit: contain;
-    transition: transform 0.3s;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation: logoFloat 4s ease-in-out infinite;
 }
 
-/* Mobile: slightly smaller but still clearly visible */
+/* Mobile: significantly larger layout but optimized for small screens */
 @media (max-width: 768px) {
-    .logo-link img { height: 80px; }
-    .header.scrolled .logo-link img { height: 70px; }
+    .logo-link img { height: 85px; } /* Reduced from 100px to avoid text overlap */
+    .header.scrolled .logo-link img { height: 65px; }
 }
 
 .logo-link:hover img {
@@ -69,7 +76,7 @@
 .logo-text {
     font-family: 'Playfair Display', serif;
     font-weight: 900;
-    font-size: 1.5rem; /* Reducido de 2.2rem */
+    font-size: 1.3rem; /* Reduced to emphasize the logo image more */
     color: #1a1a1a;
     line-height: 1;
     letter-spacing: 0.02em;
@@ -102,6 +109,7 @@ body.home-page .header:not(.scrolled) .icon-btn {
 body.home-page .header:not(.scrolled) .cart-badge {
     background: #FEBD01;
     color: #000;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 body.home-page .header:not(.scrolled) .logo-underline {
     background-color: #FEBD01;
@@ -220,7 +228,7 @@ body.home-page .header:not(.scrolled) .logo-underline {
     position: relative;
     border: none;
     padding: 0;
-    overflow: hidden;
+    /* overflow: hidden; -- REMOVED to allow badge to be visible outside button */
 }
 
 .header-avatar-btn img {
@@ -262,14 +270,18 @@ body.home-page .header:not(.scrolled) .logo-underline {
 
 .cart-badge {
     position: absolute;
-    top: -2px; right: -2px;
-    background: var(--color-accent-yellow);
-    color: var(--color-text-main);
-    font-size: 0.75rem; font-weight: 900;
-    width: 20px; height: 20px;
-    border-radius: 50%;
+    top: -5px; right: -5px; /* Positioned slightly outside for better visibility */
+    background: #FEBD01; /* Vibrant yellow brand color */
+    color: #000;
+    font-size: 0.8rem; font-weight: 900;
+    min-width: 22px; height: 22px;
+    padding: 0 4px;
+    border-radius: 999px; /* Pill shape if count grows */
     display: flex; align-items: center; justify-content: center;
-    border: 2px solid var(--color-bg-primary);
+    border: 2px solid #fff; /* White ring for contrast against purple icon hover */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    z-index: 10;
+    pointer-events: none;
 }
 
 @media (min-width: 992px) {
