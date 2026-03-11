@@ -318,6 +318,20 @@ function setupAuthInteractions() {
         '#header-login-btn'
     ];
 
+    // Toggle User Dropdown
+    document.addEventListener('click', (e) => {
+        const headerAvatar = e.target.closest('#header-user-avatar');
+        const dropdown = document.getElementById('header-user-dropdown');
+
+        if (headerAvatar) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (dropdown) dropdown.classList.toggle('active');
+        } else if (dropdown && !e.target.closest('#header-user-dropdown')) {
+            dropdown.classList.remove('active');
+        }
+    });
+
     // Direct binding for the main header button for extra reliability
     const mainLoginBtn = document.getElementById('header-login-btn');
     if (mainLoginBtn) {

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil | Ellel Oversize</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="./src/styles/variables.css">
+    <link rel="stylesheet" href="./src/styles/base.css">
+    <link rel="stylesheet" href="./src/styles/component-styles/Header.css">
+    
+    <style>
+        .profile-container {
+            max-width: 800px;
+            margin: 120px auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .profile-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 4px solid var(--color-accent-purple);
+        }
+        .profile-name {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.8rem;
+            margin-bottom: 0.2rem;
+        }
+        .profile-email {
+            color: #64748b;
+            margin-bottom: 1.5rem;
+        }
+        .info-card {
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .info-label {
+            font-weight: 700;
+            color: var(--color-accent-purple);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            margin-bottom: 0.4rem;
+        }
+        .info-value {
+            font-size: 1.1rem;
+            color: #1e293b;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.8rem 1.5rem;
+            background: var(--color-text-main);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <div class="profile-header">
+            <img id="user-avatar" src="./src/assets/img/avatar-placeholder.png" alt="Avatar" class="profile-avatar">
+            <h1 id="user-name" class="profile-name">Cargando...</h1>
+            <p id="user-email" class="profile-email">...</p>
+        </div>
+
+        <div class="info-card">
+            <div class="info-label">Nombre Completo</div>
+            <div id="info-name" class="info-value">...</div>
+        </div>
+
+        <div class="info-card">
+            <div class="info-label">Tipo de Usuario</div>
+            <div id="info-role" class="info-value">...</div>
+        </div>
+
+        <a href="index.html" class="back-btn">Volver a la tienda</a>
+    </div>
+
+    <script type="module">
+        import { getUser } from './src/scripts/auth.js';
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const user = getUser();
+            if (!user) {
+                window.location.href = 'index.html';
+                return;
+            }
+
+            document.getElementById('user-avatar').src = user.picture || './src/assets/img/avatar-placeholder.png';
+            document.getElementById('user-name').textContent = user.nombre || 'Usuario';
+            document.getElementById('user-email').textContent = user.email;
+            document.getElementById('info-name').textContent = user.nombre || '-';
+            document.getElementById('info-role').textContent = user.rol === 'admin' ? 'Administrador' : 'Cliente';
+        });
+    </script>
+</body>
+</html>

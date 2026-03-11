@@ -237,6 +237,113 @@ body.home-page .header:not(.scrolled) .logo-underline {
     object-fit: cover;
 }
 
+/* User Profile Dropdown */
+.user-menu-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.user-dropdown {
+    position: absolute;
+    top: calc(100% + 15px);
+    right: 0;
+    background: white;
+    min-width: 220px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    z-index: 1000;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.user-dropdown.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.user-dropdown::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    right: 15px;
+    width: 16px;
+    height: 16px;
+    background: white;
+    transform: rotate(45deg);
+    border-top: 1px solid rgba(0,0,0,0.05);
+    border-left: 1px solid rgba(0,0,0,0.05);
+}
+
+.user-info-brief {
+    padding-bottom: 0.8rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    text-align: left;
+}
+
+.user-info-name {
+    display: block;
+    font-weight: 800;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    color: var(--color-text-main);
+}
+
+.user-info-role {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--color-accent-purple);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 2px;
+}
+
+.user-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    color: var(--color-text-main);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    border: none;
+    background: transparent;
+    width: 100%;
+    cursor: pointer;
+}
+
+.user-dropdown-item i {
+    font-size: 1rem;
+    width: 20px;
+}
+
+.user-dropdown-item:hover {
+    background: rgba(111, 62, 205, 0.08);
+    color: var(--color-accent-purple);
+}
+
+.user-dropdown-item.logout {
+    color: #ef4444;
+}
+
+.user-dropdown-item.logout:hover {
+    background: rgba(239, 68, 68, 0.08);
+    color: #ef4444;
+}
+
 .icon-svg {
     width: 20px; height: 20px;
     background-color: currentColor;

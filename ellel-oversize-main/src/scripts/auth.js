@@ -144,17 +144,56 @@ export function updateCartAuthUI(user) {
 export function updateHeaderAuthUI(user) {
     const headerAvatar = document.getElementById('header-user-avatar');
     const loginIconBtn = document.getElementById('header-login-btn');
+    const headerDropdown = document.getElementById('header-user-dropdown');
 
     if (user) {
         if (headerAvatar) {
             headerAvatar.style.display = 'flex';
             const img = headerAvatar.querySelector('img');
-            if (img) img.src = user.picture || '';
+            if (img) img.src = user.picture || './src/assets/img/avatar-placeholder.png';
         }
         if (loginIconBtn) loginIconBtn.style.display = 'none';
+
+        // Populate dropdown
+        if (headerDropdown) {
+            const isAdmin = user.rol === 'admin';
+            headerDropdown.innerHTML = `
+                <div class="user-info-brief">
+                    <span class="user-info-name">${user.nombre || user.email}</span>
+                    <span class="user-info-role">${user.rol === 'admin' ? 'Administrador' : 'Cliente'}</span>
+                </div>
+                <a href="perfil.html" class="user-dropdown-item">
+                    <i class="fas fa-user-edit"></i> Editar Información
+                </a>
+                ${isAdmin ? `
+                <a href="admin.html" class="user-dropdown-item">
+                    <i class="fas fa-shield-alt"></i> Panel de Admin
+                </a>
+                ` : ''}
+                <button id="header-logout-btn" class="user-dropdown-item logout">
+                    <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                </button>
+            `;
+
+            // Explicitly set log out listener
+            const logoutBtn = headerDropdown.querySelector('#header-logout-btn');
+            if (logoutBtn) {
+                logoutBtn.onclick = (e) => {
+                    e.preventDefault();
+                    if (confirm('¿Estás seguro de que deseas cerrar sesión?')) {
+                        signOut();
+                        headerDropdown.classList.remove('active');
+                    }
+                };
+            }
+        }
     } else {
         if (headerAvatar) headerAvatar.style.display = 'none';
         if (loginIconBtn) loginIconBtn.style.display = '';
+        if (headerDropdown) {
+            headerDropdown.innerHTML = '';
+            headerDropdown.classList.remove('active');
+        }
     }
 }
 
