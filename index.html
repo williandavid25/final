@@ -1,15 +1,18 @@
-git add .<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Ellel Oversize - Ropa y Estilo Premium">
     <title>Ellel Oversize | Colección Exclusiva</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&family=Outfit:wght@300;400;500;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&family=Outfit:wght@300;400;500;700&family=Playfair+Display:wght@700;900&display=swap"
+        rel="stylesheet">
+
     <!-- Styles -->
     <link rel="stylesheet" href="./src/styles/variables.css">
     <link rel="stylesheet" href="./src/styles/global.css">
@@ -25,6 +28,7 @@ git add .<!DOCTYPE html>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <link rel="stylesheet" href="./src/styles/component-styles/Search.css">
 </head>
+
 <body class="home-page">
     <canvas id="particle-canvas"></canvas>
     <div id="app">
@@ -38,7 +42,7 @@ git add .<!DOCTYPE html>
                         <div class="logo-underline"></div>
                     </div>
                 </a>
-                
+
                 <nav class="desktop-nav">
                     <a href="#inicio" class="nav-item">Inicio</a>
                     <a href="nosotros.html" class="nav-item">Nosotros</a>
@@ -56,17 +60,19 @@ git add .<!DOCTYPE html>
                         </div>
                     </div>
                 </nav>
-                
+
                 <div class="header-icons">
-                    <button class="icon-btn search-btn" aria-label="Buscar"><span class="icon-svg search-icon"></span></button>
+                    <button class="icon-btn search-btn" aria-label="Buscar"><span
+                            class="icon-svg search-icon"></span></button>
                     <!-- Auth Icons -->
                     <button class="icon-btn login-btn" id="header-login-btn" aria-label="Iniciar Sesión">
                         <span class="icon-svg user-icon"></span>
                     </button>
-                    <button id="header-user-avatar" class="header-avatar-btn" aria-label="Mi cuenta" title="Cerrar sesión" style="display:none;">
+                    <button id="header-user-avatar" class="header-avatar-btn" aria-label="Mi cuenta"
+                        title="Cerrar sesión" style="display:none;">
                         <img src="" alt="Avatar">
                     </button>
-                    
+
                     <button class="icon-btn cart-btn" aria-label="Carrito" id="open-cart-btn-main">
                         <span class="icon-svg bag-icon"></span>
                         <span class="cart-badge">0</span>
@@ -82,10 +88,7 @@ git add .<!DOCTYPE html>
             <!-- ═══ HERO VIDEO BACKGROUND ═══ -->
             <section class="video-hero" id="inicio">
                 <!-- Fullscreen looping video -->
-                <video
-                    class="video-hero__bg"
-                    src="./src/assets/videos/hero-bg.mp4"
-                    autoplay muted loop playsinline
+                <video class="video-hero__bg" src="./src/assets/videos/hero-bg.mp4" autoplay muted loop playsinline
                     aria-hidden="true">
                     <source src="./src/assets/videos/hero-bg.mp4" type="video/mp4">
                 </video>
@@ -97,11 +100,14 @@ git add .<!DOCTYPE html>
                 <div class="video-hero__content container">
                     <h1 class="video-hero__title">
                         <span class="typewriter-line" id="typewriter-line1"></span><br>
-                        TU <span class="text-gold typewriter-line" id="typewriter-line2"></span><span class="typewriter-cursor" id="typewriter-cursor">|</span>
+                        TU <span class="text-gold typewriter-line" id="typewriter-line2"></span><span
+                            class="typewriter-cursor" id="typewriter-cursor">|</span>
                     </h1>
-                    <p class="video-hero__subtitle">La comodidad extrema se encuentra con el diseño urbano.<br>Descubre los nuevos modelos oversize que marcarán la tendencia.</p>
+                    <p class="video-hero__subtitle">La comodidad extrema se encuentra con el diseño urbano.<br>Descubre
+                        los nuevos modelos oversize que marcarán la tendencia.</p>
                     <div class="video-hero__cta">
-                        <a href="catalogo.html" class="btn btn-white pulse-anim shadow-hover" style="display: inline-block;">EXPLORAR CATÁLOGO</a>
+                        <a href="catalogo.html" class="btn btn-white pulse-anim shadow-hover"
+                            style="display: inline-block;">EXPLORAR CATÁLOGO</a>
                     </div>
                 </div>
 
@@ -110,7 +116,7 @@ git add .<!DOCTYPE html>
                     <span></span>
                 </div>
             </section>
-            
+
             <!-- Dynamic Product Grid Section -->
             <section id="catalogo" class="container mt-xxl mb-xxl">
                 <div class="section-header">
@@ -121,73 +127,93 @@ git add .<!DOCTYPE html>
                         <button class="filter-btn" data-genero="mujer">Mujer</button>
                     </div>
                 </div>
-                
+
                 <div id="product-grid-container" class="mt-lg">
                     <!-- Products injected dynamically here -->
                 </div>
             </section>
-            
+
             <div class="banner-carousel-wrapper mt-xl">
                 <div class="banner-carousel" id="main-banner-carousel">
                     <!-- Instala tus banners aquí. Solo cambia el 'src' -->
                     <div class="carousel-slide active">
-                        <img src="./src/assets/img/banners/5d438839-414e-4b73-baa9-7eb620739321.jpeg" alt="Banner 1" class="full-banner">
+                        <img src="./src/assets/img/banners/5d438839-414e-4b73-baa9-7eb620739321.jpeg" alt="Banner 1"
+                            class="full-banner">
                     </div>
                     <div class="carousel-slide">
-                        <img src="./src/assets/img/banners/89cdb78e-496e-4fec-9807-834a6a3249ac.jpeg" alt="Banner 2" class="full-banner">
+                        <img src="./src/assets/img/banners/89cdb78e-496e-4fec-9807-834a6a3249ac.jpeg" alt="Banner 2"
+                            class="full-banner">
                     </div>
                     <div class="carousel-slide">
-                        <img src="./src/assets/img/banners/c03f3b37-e14a-48a2-9efe-feb8c6c6c8b5.jpeg" alt="Banner 3" class="full-banner">
+                        <img src="./src/assets/img/banners/c03f3b37-e14a-48a2-9efe-feb8c6c6c8b5.jpeg" alt="Banner 3"
+                            class="full-banner">
                     </div>
                 </div>
                 <button class="carousel-nav prev-nav" aria-label="Anterior">‹</button>
                 <button class="carousel-nav next-nav" aria-label="Siguiente">›</button>
-                
+
                 <div class="pagination-dots" id="carousel-dots">
                     <span class="dot active"></span>
                     <span class="dot"></span>
                     <span class="dot"></span>
                 </div>
             </div>
-            
+
             <!-- SECCIÓN DE VIDEO -->
             <div class="video-presentation-wrapper mt-xxl mb-xl">
-                <div class="video-container container" style="position: relative; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); max-width: 1000px; margin: 0 auto;">
+                <div class="video-container container"
+                    style="position: relative; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); max-width: 1000px; margin: 0 auto;">
                     <video id="brand-video" width="100%" height="auto" autoplay loop muted playsinline>
                         <source src="./src/assets/videos/Ellel_Video_Generado.mp4" type="video/mp4">
                         Tu navegador no soporta reproducción de video.
                     </video>
                 </div>
             </div>
-            
+
 
             <!-- Gender Section: Hombre / Mujer -->
             <section class="container mt-xl mb-xxl" id="colecciones">
                 <h2 class="section-title text-center">EXPLORA POR COLECCIÓN</h2>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem;">
                     <!-- Hombre Card -->
-                    <a href="catalogo.html?genero=hombre" style="display: block; text-decoration: none; position: relative; border-radius: 20px; overflow: hidden; aspect-ratio: 3/4; background: linear-gradient(135deg, #1a1a1a 0%, #333 100%); cursor: pointer;">
-                        <img src="./src/assets/img/productos/484350914_635806539077761_961303288090069913_n.jpg" alt="Colección Hombre" style="width:100%; height:100%; object-fit:cover; opacity:0.55; transition: transform 0.5s ease;">
-                        <div style="position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 2rem; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);">
-                            <span style="font-size: 0.75rem; font-weight: 900; letter-spacing: 0.15em; text-transform: uppercase; color: #FEBD01; margin-bottom: 0.4rem;">Colección</span>
-                            <h3 style="font-family: 'Montserrat', sans-serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; color: white; text-transform: uppercase; line-height: 1;">HOMBRE</h3>
-                            <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem; margin-top: 0.4rem;">Ver productos →</p>
+                    <a href="catalogo.html?genero=hombre"
+                        style="display: block; text-decoration: none; position: relative; border-radius: 20px; overflow: hidden; aspect-ratio: 3/4; background: linear-gradient(135deg, #1a1a1a 0%, #333 100%); cursor: pointer;">
+                        <img src="./src/assets/img/productos/484350914_635806539077761_961303288090069913_n.jpg"
+                            alt="Colección Hombre"
+                            style="width:100%; height:100%; object-fit:cover; opacity:0.55; transition: transform 0.5s ease;">
+                        <div
+                            style="position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 2rem; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);">
+                            <span
+                                style="font-size: 0.75rem; font-weight: 900; letter-spacing: 0.15em; text-transform: uppercase; color: #FEBD01; margin-bottom: 0.4rem;">Colección</span>
+                            <h3
+                                style="font-family: 'Montserrat', sans-serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; color: white; text-transform: uppercase; line-height: 1;">
+                                HOMBRE</h3>
+                            <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem; margin-top: 0.4rem;">Ver
+                                productos →</p>
                         </div>
                     </a>
 
                     <!-- Mujer Card -->
-                    <a href="catalogo.html?genero=mujer" style="display: block; text-decoration: none; position: relative; border-radius: 20px; overflow: hidden; aspect-ratio: 3/4; background: linear-gradient(135deg, #4a206e 0%, #6F3ECD 100%); cursor: pointer;">
-                        <img src="./src/assets/img/productos/484346800_635803509078064_8815217517803779657_n.jpg" alt="Colección Mujer" style="width:100%; height:100%; object-fit:cover; opacity:0.55; transition: transform 0.5s ease;">
-                        <div style="position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 2rem; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);">
-                            <span style="font-size: 0.75rem; font-weight: 900; letter-spacing: 0.15em; text-transform: uppercase; color: #FEBD01; margin-bottom: 0.4rem;">Colección</span>
-                            <h3 style="font-family: 'Montserrat', sans-serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; color: white; text-transform: uppercase; line-height: 1;">MUJER</h3>
-                            <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem; margin-top: 0.4rem;">Ver productos →</p>
+                    <a href="catalogo.html?genero=mujer"
+                        style="display: block; text-decoration: none; position: relative; border-radius: 20px; overflow: hidden; aspect-ratio: 3/4; background: linear-gradient(135deg, #4a206e 0%, #6F3ECD 100%); cursor: pointer;">
+                        <img src="./src/assets/img/productos/484346800_635803509078064_8815217517803779657_n.jpg"
+                            alt="Colección Mujer"
+                            style="width:100%; height:100%; object-fit:cover; opacity:0.55; transition: transform 0.5s ease;">
+                        <div
+                            style="position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 2rem; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);">
+                            <span
+                                style="font-size: 0.75rem; font-weight: 900; letter-spacing: 0.15em; text-transform: uppercase; color: #FEBD01; margin-bottom: 0.4rem;">Colección</span>
+                            <h3
+                                style="font-family: 'Montserrat', sans-serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; color: white; text-transform: uppercase; line-height: 1;">
+                                MUJER</h3>
+                            <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem; margin-top: 0.4rem;">Ver
+                                productos →</p>
                         </div>
                     </a>
                 </div>
             </section>
         </main>
-        
+
         <!-- Premium Footer -->
         <footer class="premium-footer mt-xxl">
             <div class="container footer-grid">
@@ -216,19 +242,31 @@ git add .<!DOCTYPE html>
                     <h4>Síguenos</h4>
                     <div class="social-icons">
                         <a href="https://www.facebook.com" class="social-btn" aria-label="Facebook" target="_blank">
-                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
                         </a>
                         <a href="https://www.instagram.com" class="social-btn" aria-label="Instagram" target="_blank">
-                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
                         </a>
                         <a href="https://www.tiktok.com" class="social-btn" aria-label="TikTok" target="_blank">
-                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5v3a3 3 0 0 1-3-3v11a4 4 0 1 1-6-4z"></path></svg>
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5v3a3 3 0 0 1-3-3v11a4 4 0 1 1-6-4z"></path>
+                            </svg>
                         </a>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Ellel Oversize. Todos los derechos reservados. — <a href="privacidad.html" style="color:inherit; text-decoration:underline;">Política y Privacidad</a></p>
+                <p>&copy; 2026 Ellel Oversize. Todos los derechos reservados. — <a href="privacidad.html"
+                        style="color:inherit; text-decoration:underline;">Política y Privacidad</a></p>
             </div>
         </footer>
     </div>
@@ -269,8 +307,12 @@ git add .<!DOCTYPE html>
     </div>
 
     <!-- Floating WhatsApp Premium -->
-    <a href="https://wa.me/123456789" class="whatsapp-float premium-shadow" aria-label="Asistencia WhatsApp" target="_blank">
-        <svg viewBox="0 0 24 24"><path d="M12.03 2.5a9.5 9.5 0 106.84 16.03l2.84.95-.97-2.77A9.5 9.5 0 0012.03 2.5zm0 17.1a7.6 7.6 0 01-3.87-1.05l-.28-.16-2.12.72.73-2.07-.18-.28A7.6 7.6 0 1112.03 19.6zm4.18-5.71c-.23-.12-1.36-.67-1.57-.75-.21-.08-.36-.12-.52.12-.15.24-.59.75-.72.9-.13.15-.26.17-.49.05a6.25 6.25 0 01-1.84-1.13 6.9 6.9 0 01-1.27-1.58c-.13-.22-.01-.34.1-.45.11-.1.23-.27.35-.4.12-.14.16-.24.24-.4.07-.16.04-.3-.02-.41-.06-.11-.52-1.25-.71-1.71-.19-.45-.38-.39-.52-.4-.14-.01-.3-.01-.46-.01-.16 0-.42.06-.64.3s-.84.82-.84 2a5.75 5.75 0 001.2 3.05c.15.2 2.08 3.18 5.04 4.46.7.3 1.25.48 1.68.61.7.22 1.34.19 1.85.11.57-.08 1.76-.72 2.01-1.42.25-.7.25-1.3.17-1.42-.08-.12-.3-.19-.53-.3z"/></svg>
+    <a href="https://wa.me/123456789" class="whatsapp-float premium-shadow" aria-label="Asistencia WhatsApp"
+        target="_blank">
+        <svg viewBox="0 0 24 24">
+            <path
+                d="M12.03 2.5a9.5 9.5 0 106.84 16.03l2.84.95-.97-2.77A9.5 9.5 0 0012.03 2.5zm0 17.1a7.6 7.6 0 01-3.87-1.05l-.28-.16-2.12.72.73-2.07-.18-.28A7.6 7.6 0 1112.03 19.6zm4.18-5.71c-.23-.12-1.36-.67-1.57-.75-.21-.08-.36-.12-.52.12-.15.24-.59.75-.72.9-.13.15-.26.17-.49.05a6.25 6.25 0 01-1.84-1.13 6.9 6.9 0 01-1.27-1.58c-.13-.22-.01-.34.1-.45.11-.1.23-.27.35-.4.12-.14.16-.24.24-.4.07-.16.04-.3-.02-.41-.06-.11-.52-1.25-.71-1.71-.19-.45-.38-.39-.52-.4-.14-.01-.3-.01-.46-.01-.16 0-.42.06-.64.3s-.84.82-.84 2a5.75 5.75 0 001.2 3.05c.15.2 2.08 3.18 5.04 4.46.7.3 1.25.48 1.68.61.7.22 1.34.19 1.85.11.57-.08 1.76-.72 2.01-1.42.25-.7.25-1.3.17-1.42-.08-.12-.3-.19-.53-.3z" />
+        </svg>
     </a>
 
     <!-- Scripts -->
@@ -288,22 +330,30 @@ git add .<!DOCTYPE html>
             animation: cursorBlink 0.75s step-end infinite;
             margin-left: 2px;
         }
+
         @keyframes cursorBlink {
-            0%, 100% { opacity: 1; }
-            50%       { opacity: 0; }
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
         }
     </style>
     <script>
         (function () {
-            const line1El   = document.getElementById('typewriter-line1');
-            const line2El   = document.getElementById('typewriter-line2');
-            const cursorEl  = document.getElementById('typewriter-cursor');
+            const line1El = document.getElementById('typewriter-line1');
+            const line2El = document.getElementById('typewriter-line2');
+            const cursorEl = document.getElementById('typewriter-cursor');
             if (!line1El || !line2El) return;
 
             const words = [
                 { l1: 'REDEFINE', l2: 'ESTILO.' },
-                { l1: 'DOMINA',   l2: 'LOOK.'   },
-                { l1: 'DEFINE',   l2: 'ESENCIA.' },
+                { l1: 'DOMINA', l2: 'LOOK.' },
+                { l1: 'DEFINE', l2: 'ESENCIA.' },
             ];
             let wordIdx = 0;
 
@@ -361,4 +411,5 @@ git add .<!DOCTYPE html>
         })();
     </script>
 </body>
+
 </html>
