@@ -49,6 +49,13 @@ document.addEventListener('DOMContentLoaded', async () => {
                 
                 // Actualizar tallas y colores si es necesario dinamicamente (Opcional)
                 console.log('PDP: Vista de detalle actualizada correctamente.');
+                
+                // Show the container smoothly now that the correct data is in place
+                const wrapper = document.getElementById('pdp-wrapper');
+                if (wrapper) {
+                    if (window.gsap) gsap.to(wrapper, { opacity: 1, duration: 0.4, ease: 'power2.out' });
+                    else wrapper.style.opacity = 1;
+                }
             } else {
                 console.error(`PDP: Producto con ID ${productId} no existe en MOCK_DATA.`);
                 alert("Producto no encontrado. Volviendo al catálogo...");
@@ -56,9 +63,17 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
         } catch (error) {
             console.error("PDP: Error crítico cargando detalle de producto:", error);
+            const wrapper = document.getElementById('pdp-wrapper');
+            if (wrapper) wrapper.style.opacity = 1; 
         }
     } else {
         console.warn("PDP: Se accedió a la página de producto sin un ID válido.");
+        // No ID provided, just show the hardcoded generic layout
+        const wrapper = document.getElementById('pdp-wrapper');
+        if (wrapper) {
+            if (window.gsap) gsap.to(wrapper, { opacity: 1, duration: 0.4, ease: 'power2.out' });
+            else wrapper.style.opacity = 1;
+        }
     }
 
     // --- State ---

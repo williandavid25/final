@@ -158,7 +158,7 @@ button, input, select, textarea {
 .video-hero {
     position: relative;
     width: 100%;
-    height: 100vh;
+    height: 70vh; /* Changed from 100vh to show products below */
     min-height: 500px;
     overflow: hidden;
     display: flex;
@@ -295,5 +295,9 @@ button, input, select, textarea {
     }
     .video-hero__bg {
         object-position: center center;
+    }
+    .video-hero {
+        height: 65vh; /* slightly shorter on mobile for better scrolling */
+        min-height: 480px;
     }
 }
