@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sobre Nosotros - Ellel Oversize | Quiénes somos y nuestra misión">
+    <title>Sobre Nosotros | Ellel Oversize</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&family=Outfit:wght@300;400;500;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./src/styles/variables.css">
+    <link rel="stylesheet" href="./src/styles/global.css">
+    <link rel="stylesheet" href="./src/styles/base.css">
+    <link rel="stylesheet" href="./src/styles/component-styles/Header.css">
+    <link rel="stylesheet" href="./src/styles/component-styles/Cart.css">
+    <link rel="stylesheet" href="./src/styles/component-styles/Checkout.css">
+    <link rel="stylesheet" href="./src/styles/mobile.css">
+
+    <style>
+        body { background: #f8f8f8; }
+
+        .about-page {
+            min-height: 100vh;
+            padding-top: 100px;
+        }
+
+        /* ---- Hero ---- */
+        .about-hero {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2c1a4e 100%);
+            color: white;
+            text-align: center;
+            padding: 5rem 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            top: -80px; right: -80px;
+            width: 400px; height: 400px;
+            border-radius: 50%;
+            background: rgba(111,62,205,0.25);
+            filter: blur(60px);
+        }
+
+        .about-hero-label {
+            display: inline-block;
+            background: var(--color-accent-yellow);
+            color: #000;
+            font-size: 0.72rem;
+            font-weight: 900;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            padding: 0.35rem 1.1rem;
+            border-radius: 999px;
+            margin-bottom: 1.2rem;
+        }
+
+        .about-hero-title {
+            font-size: clamp(2.8rem, 7vw, 5.5rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 1rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .about-hero-title span { color: var(--color-accent-yellow); }
+
+        .about-hero-sub {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.65);
+            max-width: 500px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* ---- Cards Grid ---- */
+        .about-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem 5rem;
+        }
+
+        .mission-text {
+            font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+            line-height: 1.8;
+            color: #333;
+            text-align: center;
+            max-width: 780px;
+            margin: 0 auto 4rem;
+            font-weight: 400;
+        }
+
+        .mission-text a {
+            color: var(--color-accent-purple);
+            font-weight: 700;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 2 columns always as base */
+            gap: 1rem;
+            margin-bottom: 4rem;
+        }
+
+        @media (min-width: 768px) {
+            .values-grid {
+                grid-template-columns: repeat(3, 1fr); /* 3 columns on tablet+ */
+                gap: 1.5rem;
+            }
+        }
+
+        .value-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .value-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: #000;
+            margin-bottom: 0.5rem;
+        }
+
+        .value-desc {
+            font-size: 0.92rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* ---- Stats ---- */
+        .stats-bar {
+            background: #000;
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .stat-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 900;
+            color: var(--color-accent-yellow);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.6);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-top: 0.4rem;
+        }
+
+        /* ---- Team Banner ---- */
+        .team-banner {
+            background: linear-gradient(135deg, var(--color-accent-purple), #2c1a4e);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            text-align: center;
+            color: white;
+        }
+
+        .team-banner h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            color: white;
+            margin-bottom: 0.8rem;
+        }
+
+        .team-banner p {
+            color: rgba(255,255,255,0.75);
+            font-size: 1rem;
+            max-width: 500px;
+            margin: 0 auto 1.5rem;
+            line-height: 1.6;
+        }
+
+        .team-banner a {
+            display: inline-block;
+            background: var(--color-accent-yellow);
+            color: #000;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            padding: 0.9rem 2.2rem;
+            border-radius: 999px;
+            text-decoration: none;
+            transition: transform 0.2s ease;
+        }
+
+        .team-banner a:hover { transform: scale(1.05); }
+
+        /* ---- Footer ---- */
+        .simple-footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            border-top: 1px solid rgba(0,0,0,0.08);
+            margin-top: 3rem;
+        }
+
+        .simple-footer-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .simple-footer-links a {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #555;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .simple-footer-links a:hover { color: #000; }
+
+        .footer-socials {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-socials a {
+            color: #000;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.05);
+            transition: background 0.2s;
+        }
+
+        .footer-socials a:hover { background: rgba(0,0,0,0.12); }
+
+        .footer-copy {
+            font-size: 0.78rem;
+            color: #999;
+        }
+
+        @media (max-width: 600px) {
+            .stats-bar {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                padding: 2rem 1.5rem;
+            }
+
+            .about-content {
+                padding: 2.5rem 1rem 3rem;
+            }
+
+            .about-hero {
+                padding: 3rem 1rem;
+            }
+
+            .value-card {
+                padding: 1.5rem;
+            }
+
+            .team-banner {
+                padding: 2rem 1.2rem;
+                border-radius: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="particle-canvas"></canvas>
+    <div id="app">
+
+        <!-- Header -->
+        <header id="main-header" class="header scrolled">
+            <div class="header-container container">
+                <a href="index.html" class="logo-link">
+                    <img src="./src/assets/img/logo-square.png" alt="Ellel Oversize Logo">
+                    <div class="logo-text-wrapper">
+                        <span class="logo-text">Ellel Oversize</span>
+                        <div class="logo-underline"></div>
+                    </div>
+                </a>
+                <nav class="desktop-nav">
+                    <a href="index.html" class="nav-item">Inicio</a>
+                    <a href="catalogo.html?genero=hombre" class="nav-item">Hombre</a>
+                    <a href="catalogo.html?genero=mujer" class="nav-item">Mujer</a>
+                    <div class="nav-item-dropdown">
+                        <a href="catalogo.html" class="nav-item">Catálogo</a>
+                        <div class="dropdown-menu">
+                            <a href="catalogo.html?categoria=buzos" class="dropdown-link">Buzos</a>
+                            <a href="catalogo.html?categoria=camisetas" class="dropdown-link">Camisetas</a>
+                            <a href="catalogo.html?categoria=conjuntos" class="dropdown-link">Conjuntos</a>
+                            <a href="catalogo.html?categoria=pantalones" class="dropdown-link">Pantalones</a>
+                            <a href="catalogo.html?categoria=chaquetas" class="dropdown-link">Chaquetas</a>
+                        </div>
+                    </div>
+                    <a href="contacto.html" class="nav-item">Contacto</a>
+                </nav>
+                <div class="header-icons">
+                    <button class="icon-btn cart-btn" aria-label="Carrito" id="open-cart-btn-main">
+                        <span class="icon-svg bag-icon"></span>
+                        <span class="cart-badge">0</span>
+                    </button>
+                    <button class="icon-btn menu-btn-mobile" aria-label="Menú" id="open-menu-btn">
+                        <span class="icon-svg menu-icon"></span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <div class="about-page">
+
+            <!-- Hero -->
+            <div class="about-hero">
+                <div class="container" style="position: relative; z-index: 2;">
+                    <span class="about-hero-label">Nuestra Historia</span>
+                    <h1 class="about-hero-title">SOBRE <span>NOSOTROS</span></h1>
+                    <p class="about-hero-sub">Somos una tienda de ropa dedicada a ofrecer prendas modernas, cómodas y de excelente calidad para todos los estilos.</p>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="about-content">
+
+                <!-- Mission -->
+                <p class="mission-text">
+                    En <strong>Ellel Oversize</strong> creemos que la moda debe ser accesible, cómoda y auténtica. Nació de la pasión por el streetwear urbano y la necesidad de ropa que se adapte a cada cuerpo sin sacrificar el estilo. Cada prenda está pensada para durar, para sentirse bien y para verse increíble.
+                </p>
+
+                <!-- Valores -->
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="value-icon">🎯</div>
+                        <div class="value-title">Calidad Premium</div>
+                        <div class="value-desc">Usamos algodón peinado de alto gramaje (300GSM) para que cada prenda tenga la caída perfecta y dure mucho tiempo.</div>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">🌆</div>
+                        <div class="value-title">Estilo Urbano</div>
+                        <div class="value-desc">Cortes exclusivos oversize que definen la cultura streetwear. Diseños pensados para destacar en cualquier ambiente.</div>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">♻️</div>
+                        <div class="value-title">Compromiso</div>
+                        <div class="value-desc">Producción responsable, trato justo y enfoque en la satisfacción de nuestros clientes en cada pedido.</div>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">🚀</div>
+                        <div class="value-title">Innovación</div>
+                        <div class="value-desc">Temporada tras temporada exploramos nuevas siluetas, colores y texturas para ofrecer siempre algo fresco.</div>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">💜</div>
+                        <div class="value-title">Comunidad</div>
+                        <div class="value-desc">Nuestros clientes son parte de la familia Ellel. Su satisfacción es nuestro motor y motivación diaria.</div>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">📦</div>
+                        <div class="value-title">Envío Rápido</div>
+                        <div class="value-desc">Tu pedido preparado y enviado en tiempo récord para que puedas disfrutar tu ropa lo antes posible.</div>
+                    </div>
+                </div>
+
+                <!-- Stats -->
+                <div class="stats-bar">
+                    <div>
+                        <div class="stat-number">+500</div>
+                        <div class="stat-label">Clientes felices</div>
+                    </div>
+                    <div>
+                        <div class="stat-number">9+</div>
+                        <div class="stat-label">Modelos exclusivos</div>
+                    </div>
+                    <div>
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Calidad garantizada</div>
+                    </div>
+                </div>
+
+                <!-- CTA Banner -->
+                <div class="team-banner">
+                    <h2>¿Lista para tu <span style="color:#FEBD01;">próximo look</span>?</h2>
+                    <p>Explora toda la colección y encuentra la prenda perfecta que te represente.</p>
+                    <a href="catalogo.html">VER CATÁLOGO COMPLETO →</a>
+                </div>
+
+            </div>
+
+            <!-- Footer -->
+            <footer class="simple-footer">
+                <div class="simple-footer-links">
+                    <a href="index.html">Inicio</a>
+                    <a href="catalogo.html">Catálogo</a>
+                    <a href="contacto.html">Contacto</a>
+                    <a href="nosotros.html">Sobre Nosotros</a>
+                    <a href="privacidad.html">Política y Privacidad</a>
+                </div>
+                <div class="footer-socials">
+                    <a href="https://www.facebook.com" target="_blank" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    </a>
+                    <a href="https://www.instagram.com" target="_blank" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+                    </a>
+                    <a href="https://www.tiktok.com" target="_blank" aria-label="TikTok">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93v8.12a8.36 8.36 0 0 1-8.36 8.36A8.36 8.36 0 0 1 0 16.21a8.36 8.36 0 0 1 8.36-8.36c.19 0 .38.01.57.02v4.04c-.19-.02-.38-.03-.57-.03-2.31 0-4.18 1.87-4.18 4.18s1.87 4.18 4.18 4.18 4.18-1.87 4.18-4.18V.02h4z"/></svg>
+                    </a>
+                </div>
+                <p class="footer-copy">© 2026 Ellel Oversize. Todos los derechos reservados.</p>
+            </footer>
+
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div id="cart-container"></div>
+    <div id="checkout-container"></div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-overlay" id="mobile-menu">
+        <div class="menu-header">
+            <img src="./src/assets/img/logo-square.png" alt="Logo">
+            <button class="icon-btn" id="close-menu-btn">×</button>
+        </div>
+        <nav class="mobile-nav">
+            <ul class="main-menu-list">
+                <li><a href="index.html" class="mobile-link">INICIO</a></li>
+                <li><a href="catalogo.html?genero=hombre" class="mobile-link">HOMBRE</a></li>
+                <li><a href="catalogo.html?genero=mujer" class="mobile-link">MUJER</a></li>
+                <li><a href="catalogo.html" class="mobile-link">CATÁLOGO</a></li>
+                <li><a href="contacto.html" class="mobile-link">CONTACTO</a></li>
+                <li><a href="privacidad.html" class="mobile-link">PRIVACIDAD</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- WhatsApp -->
+    <a href="https://wa.me/123456789" class="whatsapp-float premium-shadow" aria-label="WhatsApp" target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M12.03 2.5a9.5 9.5 0 106.84 16.03l2.84.95-.97-2.77A9.5 9.5 0 0012.03 2.5zm0 17.1a7.6 7.6 0 01-3.87-1.05l-.28-.16-2.12.72.73-2.07-.18-.28A7.6 7.6 0 1112.03 19.6zm4.18-5.71c-.23-.12-1.36-.67-1.57-.75-.21-.08-.36-.12-.52.12-.15.24-.59.75-.72.9-.13.15-.26.17-.49.05a6.25 6.25 0 01-1.84-1.13 6.9 6.9 0 01-1.27-1.58c-.13-.22-.01-.34.1-.45.11-.1.23-.27.35-.4.12-.14.16-.24.24-.4.07-.16.04-.3-.02-.41-.06-.11-.52-1.25-.71-1.71-.19-.45-.38-.39-.52-.4-.14-.01-.3-.01-.46-.01-.16 0-.42.06-.64.3s-.84.82-.84 2a5.75 5.75 0 001.2 3.05c.15.2 2.08 3.18 5.04 4.46.7.3 1.25.48 1.68.61.7.22 1.34.19 1.85.11.57-.08 1.76-.72 2.01-1.42.25-.7.25-1.3.17-1.42-.08-.12-.3-.19-.53-.3z"/></svg>
+    </a>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="./src/scripts/particleCursor.js"></script>
+    <script type="module">
+        import { initAnimations } from './src/scripts/animations.js';
+        import { MiniCart } from './src/components/cart/MiniCart.js';
+        import { CheckoutModal } from './src/components/forms/CheckoutForm.js';
+        import { initCart } from './src/scripts/cartState.js';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Cart & Checkout
+            const cartContainer = document.getElementById('cart-container');
+            if (cartContainer) cartContainer.innerHTML = MiniCart();
+            const checkoutContainer = document.getElementById('checkout-container');
+            if (checkoutContainer) checkoutContainer.innerHTML = CheckoutModal();
+            initCart();
+
+            // Mobile menu
+            const menuBtn = document.getElementById('open-menu-btn');
+            const closeMenuBtn = document.getElementById('close-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (menuBtn && mobileMenu) menuBtn.addEventListener('click', () => mobileMenu.classList.add('active'));
+            if (closeMenuBtn && mobileMenu) closeMenuBtn.addEventListener('click', () => mobileMenu.classList.remove('active'));
+
+            // Animations
+            initAnimations();
+        });
+    </script>
+</body>
+</html>
