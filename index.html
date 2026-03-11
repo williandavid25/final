@@ -35,18 +35,19 @@
                     </div>
                 </a>
                 
-                <!-- Desktop Navigation restored and styled minimally -->
                 <nav class="desktop-nav">
                     <a href="#inicio" class="nav-item">Inicio</a>
                     <a href="contacto.html" class="nav-item">Contacto</a>
-                    <a href="#nosotros" class="nav-item">Nosotros</a>
+                    <a href="catalogo.html?genero=hombre" class="nav-item">Hombre</a>
+                    <a href="catalogo.html?genero=mujer" class="nav-item">Mujer</a>
                     <div class="nav-item-dropdown">
-                        <a href="#catalogo" class="nav-item">Catálogo</a>
+                        <a href="catalogo.html" class="nav-item">Catálogo</a>
                         <div class="dropdown-menu shadow-hover">
-                            <a href="#buzos" class="dropdown-link">Buzos</a>
-                            <a href="#conjuntos" class="dropdown-link">Conjuntos</a>
-                            <a href="#pantalones" class="dropdown-link">Pantalones</a>
-                            <a href="#camisetas" class="dropdown-link">Camisetas</a>
+                            <a href="catalogo.html?categoria=buzos" class="dropdown-link">Buzos</a>
+                            <a href="catalogo.html?categoria=camisetas" class="dropdown-link">Camisetas</a>
+                            <a href="catalogo.html?categoria=conjuntos" class="dropdown-link">Conjuntos</a>
+                            <a href="catalogo.html?categoria=pantalones" class="dropdown-link">Pantalones</a>
+                            <a href="catalogo.html?categoria=chaquetas" class="dropdown-link">Chaquetas</a>
                         </div>
                     </div>
                 </nav>
@@ -173,6 +174,32 @@
                     </div>
                 </div>
             </section>
+
+            <!-- Gender Section: Hombre / Mujer -->
+            <section class="container mt-xl mb-xxl" id="colecciones">
+                <h2 class="section-title text-center">EXPLORA POR COLECCIÓN</h2>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem;">
+                    <!-- Hombre Card -->
+                    <a href="catalogo.html?genero=hombre" style="display: block; text-decoration: none; position: relative; border-radius: 20px; overflow: hidden; aspect-ratio: 3/4; background: linear-gradient(135deg, #1a1a1a 0%, #333 100%); cursor: pointer;">
+                        <img src="./src/assets/img/productos/484350914_635806539077761_961303288090069913_n.jpg" alt="Colección Hombre" style="width:100%; height:100%; object-fit:cover; opacity:0.55; transition: transform 0.5s ease;">
+                        <div style="position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 2rem; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);">
+                            <span style="font-size: 0.75rem; font-weight: 900; letter-spacing: 0.15em; text-transform: uppercase; color: #FEBD01; margin-bottom: 0.4rem;">Colección</span>
+                            <h3 style="font-family: 'Montserrat', sans-serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; color: white; text-transform: uppercase; line-height: 1;">HOMBRE</h3>
+                            <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem; margin-top: 0.4rem;">Ver productos →</p>
+                        </div>
+                    </a>
+
+                    <!-- Mujer Card -->
+                    <a href="catalogo.html?genero=mujer" style="display: block; text-decoration: none; position: relative; border-radius: 20px; overflow: hidden; aspect-ratio: 3/4; background: linear-gradient(135deg, #4a206e 0%, #6F3ECD 100%); cursor: pointer;">
+                        <img src="./src/assets/img/productos/484346800_635803509078064_8815217517803779657_n.jpg" alt="Colección Mujer" style="width:100%; height:100%; object-fit:cover; opacity:0.55; transition: transform 0.5s ease;">
+                        <div style="position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 2rem; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);">
+                            <span style="font-size: 0.75rem; font-weight: 900; letter-spacing: 0.15em; text-transform: uppercase; color: #FEBD01; margin-bottom: 0.4rem;">Colección</span>
+                            <h3 style="font-family: 'Montserrat', sans-serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; color: white; text-transform: uppercase; line-height: 1;">MUJER</h3>
+                            <p style="color: rgba(255,255,255,0.7); font-size: 0.85rem; margin-top: 0.4rem;">Ver productos →</p>
+                        </div>
+                    </a>
+                </div>
+            </section>
         </main>
         
         <!-- Premium Footer -->
@@ -234,14 +261,16 @@
             <ul class="main-menu-list">
                 <li><a href="#inicio" class="mobile-link">INICIO</a></li>
                 <li><a href="contacto.html" class="mobile-link">CONTACTO</a></li>
-                <li><a href="#nosotros" class="mobile-link">SOBRE NOSOTROS</a></li>
+                <li><a href="catalogo.html?genero=hombre" class="mobile-link">HOMBRE</a></li>
+                <li><a href="catalogo.html?genero=mujer" class="mobile-link">MUJER</a></li>
                 <li class="has-submenu">
-                    <a href="#catalogo" class="mobile-link">CATALOGO</a>
+                    <a href="catalogo.html" class="mobile-link">CATÁLOGO</a>
                     <ul class="submenu-list">
-                        <li><a href="#buzos" class="mobile-sublink">BUZOS</a></li>
-                        <li><a href="#conjuntos" class="mobile-sublink">CONJUNTOS</a></li>
-                        <li><a href="#pantalones" class="mobile-sublink">PANTALONES</a></li>
-                        <li><a href="#camisetas" class="mobile-sublink">CAMISETAS</a></li>
+                        <li><a href="catalogo.html?categoria=buzos" class="mobile-sublink">BUZOS</a></li>
+                        <li><a href="catalogo.html?categoria=camisetas" class="mobile-sublink">CAMISETAS</a></li>
+                        <li><a href="catalogo.html?categoria=conjuntos" class="mobile-sublink">CONJUNTOS</a></li>
+                        <li><a href="catalogo.html?categoria=pantalones" class="mobile-sublink">PANTALONES</a></li>
+                        <li><a href="catalogo.html?categoria=chaquetas" class="mobile-sublink">CHAQUETAS</a></li>
                     </ul>
                 </li>
             </ul>
