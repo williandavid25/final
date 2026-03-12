@@ -63,8 +63,40 @@
 
 /* Mobile: significantly larger layout but optimized for small screens */
 @media (max-width: 768px) {
-    .logo-link img { height: 85px; } /* Reduced from 100px to avoid text overlap */
-    .header.scrolled .logo-link img { height: 65px; }
+    .logo-link img { height: 60px; } /* Reduced to create more horizontal space */
+    .header.scrolled .logo-link img { height: 50px; }
+    
+    .logo-link {
+        gap: 6px; /* Tighter gap between logo image and text */
+    }
+
+    .logo-text {
+        font-size: 0.95rem; /* Smaller font to avoid overlap with search icon */
+    }
+
+    .logo-underline {
+        height: 2px;
+        margin-top: 1px;
+    }
+
+    .header-icons {
+        gap: 4px; /* Move icons closer together */
+    }
+
+    .icon-btn {
+        width: 36px;
+        height: 36px;
+    }
+
+    .icon-svg {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .header-container {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
 }
 
 .logo-link:hover img {

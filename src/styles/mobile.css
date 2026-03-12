@@ -3,15 +3,15 @@
 @media (max-width: 768px) {
     /* Responsive Logo scaling to prevent breaking header on phones */
     .logo-link img {
-        height: 90px !important; /* Made significantly larger as requested */
+        height: 60px !important; /* Adjusted to prevent overlap on mobile */
     }
     
     .logo-text {
-        font-size: 1.2rem !important; /* Slightly smaller to emphasize the logo image more */
+        font-size: 0.95rem !important; /* Adjusted to prevent overlap with search icon */
     }
     
     .logo-link {
-        gap: 8px !important;
+        gap: 6px !important;
     }
 
     .header {
@@ -185,4 +185,3 @@
     .mobile-sublink:focus::after {
         width: 100%;
     }
-}
