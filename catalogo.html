@@ -19,212 +19,49 @@
     <link rel="stylesheet" href="./src/styles/component-styles/Cart.css">
     <link rel="stylesheet" href="./src/styles/component-styles/Checkout.css">
     <link rel="stylesheet" href="./src/styles/mobile.css">
+    <link rel="stylesheet" href="./src/styles/component-styles/Search.css">
 
     <style>
-        /* Page-specific styles for Catalog page */
-        .catalog-page {
-            min-height: 100vh;
-            padding-top: 140px; /* Increased for logo clearance */
-            background: var(--color-bg-primary);
-        }
-
         .catalog-hero {
-            padding-top: 140px; /* Increased for logo clearance */
-            padding-bottom: 3rem;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-            color: white;
+            background: linear-gradient(135deg, #1a1a1a 0%, #000 100%);
+            padding: 8rem 0 5rem;
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
-
+        .catalog-hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(circle at 20% 30%, rgba(111, 62, 205, 0.15) 0%, transparent 50%);
+            pointer-events: none;
+        }
         .catalog-hero-label {
             display: inline-block;
             background: var(--color-accent-yellow);
             color: #000;
-            font-size: 0.75rem;
-            font-weight: 900;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            padding: 0.4rem 1rem;
-            border-radius: 999px;
-            margin-bottom: 1rem;
-        }
-
-        .catalog-hero-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: clamp(2.5rem, 6vw, 5rem);
-            font-weight: 900;
-            color: white;
-            text-transform: uppercase;
-            line-height: 1;
-            margin-bottom: 0.5rem;
-        }
-
-        .catalog-hero-title span {
-            color: var(--color-accent-yellow);
-        }
-
-        .catalog-hero-sub {
-            font-size: 1rem;
-            color: rgba(255,255,255,0.6);
-            margin-top: 0.75rem;
-        }
-
-        .catalog-result-count {
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.5);
-            margin-top: 0.5rem;
-        }
-
-        .catalog-controls {
-            background: white;
-            border-bottom: 1px solid rgba(0,0,0,0.06);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 50;
-        }
-
-        .controls-inner {
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 0 var(--space-lg);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .filter-chips {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-
-        .chip {
-            padding: 0.5rem 1.4rem;
-            border-radius: var(--radius-full);
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
             font-size: 0.75rem;
             font-weight: 800;
-            font-family: 'Montserrat', sans-serif;
             text-transform: uppercase;
-            letter-spacing: 0.08em;
-            cursor: pointer;
-            border: 1.5px solid rgba(0,0,0,0.1);
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            color: #444;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            position: relative;
-            overflow: hidden;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
         }
-
-        .chip:hover {
-            border-color: var(--color-accent-purple);
-            color: var(--color-accent-purple);
-            transform: translateY(-2px);
-            background: rgba(255, 255, 255, 0.9);
-        }
-
-        .chip.active {
-            background: #000;
-            border-color: #000;
+        .catalog-hero-title {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            margin-bottom: 1rem;
             color: #fff;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.25), 0 0 15px rgba(111, 62, 205, 0.3);
-            transform: scale(1.05);
         }
-
-        .chip::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: var(--color-accent-yellow);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            opacity: 0;
-            transition: width 0.6s ease-out, height 0.6s ease-out, opacity 0.6s ease-out;
-            pointer-events: none;
-        }
-
-        .chip.animating::before {
-            width: 300%;
-            height: 300%;
-            opacity: 0.4;
-        }
-
-        .sort-select {
-            padding: 0.5rem 1rem;
-            border: 2px solid #e0e0e0;
-            border-radius: 999px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            font-family: 'Montserrat', sans-serif;
-            cursor: pointer;
-            color: #555;
-            background: white;
-            outline: none;
-            transition: border-color 0.2s;
-        }
-
-        .sort-select:focus {
-            border-color: #000;
-        }
-
-        .catalog-main {
-            max-width: 1300px;
+        .catalog-hero-title span { color: var(--color-accent-yellow); }
+        .catalog-hero-sub {
+            color: rgba(255,255,255,0.7);
+            max-width: 600px;
             margin: 0 auto;
-            padding: 2rem var(--space-lg) 4rem;
         }
-
-        .empty-catalog {
-            text-align: center;
-            padding: 5rem 1rem;
-            color: #999;
-        }
-
-        .empty-catalog h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: #333;
-        }
-
-        .empty-catalog a {
-            display: inline-block;
-            margin-top: 1.5rem;
-            padding: 0.8rem 2rem;
-            background: #000;
-            color: white;
-            border-radius: 999px;
-            font-weight: 700;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            text-decoration: none;
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .catalog-loaded .product-card {
-            animation: fadeInUp 0.4s ease forwards;
-        }
-
-        .catalog-loaded .product-card:nth-child(2) { animation-delay: 0.05s; }
-        .catalog-loaded .product-card:nth-child(3) { animation-delay: 0.10s; }
-        .catalog-loaded .product-card:nth-child(4) { animation-delay: 0.15s; }
-        .catalog-loaded .product-card:nth-child(5) { animation-delay: 0.20s; }
-        .catalog-loaded .product-card:nth-child(6) { animation-delay: 0.25s; }
-        .catalog-loaded .product-card:nth-child(7) { animation-delay: 0.30s; }
-        .catalog-loaded .product-card:nth-child(8) { animation-delay: 0.35s; }
     </style>
-    <link rel="stylesheet" href="./src/styles/component-styles/Search.css">
 </head>
-<body>
+<body class="catalog-page">
     <canvas id="particle-canvas"></canvas>
     <div id="app">
 
@@ -241,8 +78,8 @@
 
                 <nav class="desktop-nav">
                     <a href="index.html" class="nav-item">Inicio</a>
-                    <a href="contacto.html" class="nav-item">Contacto</a>
                     <a href="nosotros.html" class="nav-item">Nosotros</a>
+                    <a href="contacto.html" class="nav-item">Contacto</a>
                     <div class="nav-item-dropdown">
                         <a href="catalogo.html" class="nav-item">Catálogo</a>
                         <div class="dropdown-menu shadow-hover">
@@ -252,13 +89,17 @@
                             <a href="catalogo.html?categoria=camisetas" class="dropdown-link">Camisetas</a>
                             <a href="catalogo.html?categoria=conjuntos" class="dropdown-link">Conjuntos</a>
                             <a href="catalogo.html?categoria=pantalones" class="dropdown-link">Pantalones</a>
-                            <a href="catalogo.html?categoria=chaquetas" class="dropdown-link">Chaquetas</a>
                         </div>
                     </div>
                 </nav>
 
                 <div class="header-icons">
                     <button class="icon-btn search-btn" aria-label="Buscar"><span class="icon-svg search-icon"></span></button>
+                    <!-- Wishlist Token -->
+                    <button class="icon-btn wishlist-header-btn" aria-label="Favoritos" id="header-wishlist-btn">
+                        <span class="icon-svg heart-icon-header"></span>
+                        <span class="wishlist-badge">0</span>
+                    </button>
                     <!-- Auth Icons -->
                     <button class="icon-btn login-btn" id="header-login-btn" aria-label="Iniciar Sesión">
                         <span class="icon-svg user-icon"></span>
@@ -266,6 +107,7 @@
                     <button id="header-user-avatar" class="header-avatar-btn" aria-label="Mi cuenta" title="Cerrar sesión" style="display:none;">
                         <img src="" alt="Avatar">
                     </button>
+
                     <button class="icon-btn cart-btn" aria-label="Carrito" id="open-cart-btn-main">
                         <span class="icon-svg bag-icon"></span>
                         <span class="cart-badge">0</span>
@@ -280,11 +122,10 @@
         <div class="catalog-page">
             <!-- Hero Banner -->
             <div class="catalog-hero" id="catalog-hero">
-                <div class="container">
+                <div class="container text-center">
                     <span class="catalog-hero-label" id="hero-label">Colección Completa</span>
                     <h1 class="catalog-hero-title" id="hero-title">TODOS LOS <span>MODELOS</span></h1>
                     <p class="catalog-hero-sub" id="hero-sub">Streetwear oversize de calidad premium</p>
-                    <p class="catalog-result-count" id="result-count"></p>
                 </div>
             </div>
 
@@ -296,7 +137,6 @@
                     </div>
                     <select class="sort-select" id="sort-select">
                         <option value="default">Ordenar: Destacados</option>
-                        <option value="precio-asc">Precio: Menor a Mayor</option>
                         <option value="precio-desc">Precio: Mayor a Menor</option>
                         <option value="nuevo">Nuevos primero</option>
                     </select>
@@ -304,7 +144,7 @@
             </div>
 
             <!-- Product Grid -->
-            <div class="catalog-main">
+            <div class="catalog-main container">
                 <div id="catalog-grid-container">
                     <p style="text-align:center; padding: 3rem; color: #999;">Cargando productos...</p>
                 </div>
@@ -316,6 +156,8 @@
     <!-- Modals -->
     <div id="cart-container"></div>
     <div id="checkout-container"></div>
+    <div id="wishlist-container"></div>
+    <div id="auth-container"></div>
 
     <!-- Mobile Menu -->
     <div class="mobile-menu-overlay" id="mobile-menu">
@@ -326,6 +168,7 @@
         <nav class="mobile-nav">
             <ul class="main-menu-list">
                 <li><a href="index.html" class="mobile-link">INICIO</a></li>
+                <li><a href="nosotros.html" class="mobile-link">NOSOTROS</a></li>
                 <li><a href="contacto.html" class="mobile-link">CONTACTO</a></li>
                 <li><a href="catalogo.html?genero=hombre" class="mobile-link">HOMBRE</a></li>
                 <li><a href="catalogo.html?genero=mujer" class="mobile-link">MUJER</a></li>
@@ -336,7 +179,6 @@
                         <li><a href="catalogo.html?categoria=camisetas" class="mobile-sublink">CAMISETAS</a></li>
                         <li><a href="catalogo.html?categoria=conjuntos" class="mobile-sublink">CONJUNTOS</a></li>
                         <li><a href="catalogo.html?categoria=pantalones" class="mobile-sublink">PANTALONES</a></li>
-                        <li><a href="catalogo.html?categoria=chaquetas" class="mobile-sublink">CHAQUETAS</a></li>
                     </ul>
                 </li>
             </ul>
@@ -351,7 +193,8 @@
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="./src/scripts/particleCursor.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
+    <script src="src/scripts/antigravity3D.js"></script>
     <script type="module" src="./src/scripts/catalogo.js"></script>
 </body>
 </html>

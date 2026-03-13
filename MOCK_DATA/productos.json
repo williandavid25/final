@@ -61,14 +61,14 @@
     },
     {
         "id": "prod-6",
-        "nombre": "Chaqueta Rompevientos",
-        "descripcion": "Impermeable y extremadamente ligera.",
+        "nombre": "Buzo Impermeable",
+        "descripcion": "Chaqueta rompevientos impermeable y extremadamente ligera.",
         "precio": 65.00,
         "imagenes": ["./src/assets/img/productos/484935340_635819232409825_1032380830798064492_n.jpg"],
         "tallas": ["L", "XL"],
         "colores": ["#000000"],
         "esNuevo": true,
-        "categoria": "chaquetas",
+        "categoria": "buzos",
         "genero": "hombre"
     },
     {
