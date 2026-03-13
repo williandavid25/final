@@ -1,4 +1,4 @@
-name = "final"
+name = "mi-pagina-web"
 compatibility_date = "2024-09-25"
 main = "worker/index.js"
 
