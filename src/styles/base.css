@@ -97,15 +97,21 @@ button, input, select, textarea {
 
 .btn-yellow {
     background: var(--color-accent-yellow);
-    color: var(--color-text-main); /* Black text on yellow is more premium/legible */
-    padding: 1.2rem 2.5rem;
-    font-size: 1rem;
-    border: 2px solid var(--color-accent-yellow);
+    color: #000;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    border: none;
+    padding: 1rem 2.8rem;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    border-radius: var(--radius-full);
+    box-shadow: 0 4px 15px rgba(254, 189, 1, 0.2);
 }
 
 .btn-yellow:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(254, 189, 1, 0.3);
+    background: #e5aa01;
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 10px 30px rgba(254, 189, 1, 0.4);
 }
 
 .btn-outline {
@@ -163,6 +169,17 @@ button, input, select, textarea {
     overflow: hidden;
     display: flex;
     align-items: center; /* Changed from flex-end to center for better balance with shorter height */
+    background: radial-gradient(circle at 30% 50%, #1a1a1a 0%, #000 100%); /* Sophisticated base */
+}
+
+/* Fallback brand gradient (will show before/under video) */
+.video-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 70% 30%, rgba(254, 189, 1, 0.15) 0%, transparent 60%);
+    z-index: 0;
+    pointer-events: none;
 }
 
 /* The video itself — always covers full section */
@@ -173,7 +190,7 @@ button, input, select, textarea {
     height: 100%;
     object-fit: cover;
     object-position: center 60%;   /* frame the outfit, not the dark top */
-    z-index: 0;
+    z-index: 1;
     pointer-events: none;
 }
 
@@ -181,7 +198,7 @@ button, input, select, textarea {
 .video-hero__overlay {
     position: absolute;
     inset: 0;
-    z-index: 1;
+    z-index: 2;
     background: linear-gradient(
         to bottom,
         rgba(0,0,0,0.15) 0%,
@@ -194,7 +211,7 @@ button, input, select, textarea {
 /* Text content floats above video */
 .video-hero__content {
     position: relative;
-    z-index: 2;
+    z-index: 3;
     padding-top: 120px; /* Safety area to avoid touching the logo */
     padding-bottom: 2rem;
     width: 100%;
@@ -263,7 +280,7 @@ button, input, select, textarea {
     bottom: 1.5rem;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 3;
+    z-index: 4;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -301,4 +318,154 @@ button, input, select, textarea {
         height: 65vh; /* slightly shorter on mobile for better scrolling */
         min-height: 480px;
     }
+}
+/* ═══════════════════════════════════════════════════════
+   CATALOG FILTERS (CHIPS)
+   ═══════════════════════════════════════════════════════ */
+.catalog-controls {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 1.2rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    position: sticky;
+    top: 70px;
+    z-index: 20; /* High enough to be over content but under header if needed */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+}
+
+.controls-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+}
+
+.filter-chips {
+    display: flex;
+    gap: 1.2rem;
+    overflow-x: auto;
+    padding: 0.5rem 0.5rem 1rem 0.5rem; /* Extra bottom padding for 3D shadow */
+    scrollbar-width: none;
+    align-items: center;
+}
+
+.filter-chips::-webkit-scrollbar { display: none; } /* Hide scrollbar Chrome/Safari */
+
+.filter-chip {
+    white-space: nowrap;
+    padding: 0.8rem 2rem;
+    border-radius: 16px; /* Slightly more modern than full 50px */
+    background: #fff;
+    color: #000;
+    font-size: 0.82rem;
+    font-weight: 800;
+    font-family: var(--font-heading);
+    border: 2px solid #000;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    box-shadow: 
+        0 4px 0 #000,
+        0 8px 15px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+}
+
+.filter-chip::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: #000;
+    border-radius: 50px;
+    z-index: -1;
+    opacity: 0;
+    transform: scale(0.6);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.filter-chip span {
+    font-size: 1.1rem;
+    margin-right: 6px;
+    vertical-align: middle;
+}
+
+.filter-chip:hover {
+    transform: translateY(-4px);
+    box-shadow: 
+        0 6px 0 #000,
+        0 12px 20px rgba(0,0,0,0.15);
+}
+
+.filter-chip.active {
+    background: #000;
+    color: #FEBD01; /* Brand gold for active text */
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #000;
+}
+
+.filter-chip:active {
+    transform: translateY(4px);
+    box-shadow: 0 0 0 #000;
+}
+
+.sort-select {
+    padding: 0.7rem 1.5rem;
+    border-radius: 12px;
+    border: 2px solid #000;
+    background: #fff;
+    color: #000;
+    font-weight: 800;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 0 #000;
+}
+
+.sort-select:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 #000;
+}
+
+.sort-select:focus {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #000;
+    outline: none;
+}
+
+@media (max-width: 992px) {
+    .controls-inner {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+    }
+    .filter-chips {
+        justify-content: flex-start;
+        padding-bottom: 1.2rem;
+    }
+    .sort-select {
+        width: 100%;
+        text-align: center;
+    }
+}
+@media (max-width: 768px) {
+    .controls-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    .catalog-controls {
+        top: 60px;
+    }
+}/* --- Animated Gradient Text (Pro) --- */
+
+/* Adjustments for Hero Typography */
+.hero-title span {
+    display: inline-block;
 }

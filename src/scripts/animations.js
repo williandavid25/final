@@ -14,19 +14,25 @@ export const initAnimations = () => {
         { sel: '.whatsapp-float',    y: 0, scale: true, rotate: true },
     ];
 
-    let delay = 0;
+    let delay = 0.2; // Start with a small delay for page load
     heroEls.forEach(({ sel, y, scale, rotate }) => {
         const el = document.querySelector(sel);
         if (!el) return;
 
-        const from = { opacity: 0, y };
-        const to   = { opacity: 1, y: 0, duration: isMobile ? 0.5 : 0.7, ease: 'power3.out', delay };
+        const from = { opacity: 0, y: y * 1.5 }; // More dramatic entry
+        const to   = { 
+            opacity: 1, 
+            y: 0, 
+            duration: isMobile ? 0.6 : 1.2, // Slower, more elegant
+            ease: 'expo.out', // Premium ease
+            delay 
+        };
 
-        if (scale)  { from.scale = scale === true ? 0 : scale; to.scale = 1; }
-        if (rotate) { from.rotation = -45; to.rotation = 0; }
+        if (scale)  { from.scale = scale === true ? 0.8 : scale; to.scale = 1; }
+        if (rotate) { from.rotation = -15; to.rotation = 0; }
 
         gsap.fromTo(el, from, to);
-        delay += 0.1;
+        delay += 0.15; // Consistent stagger
     });
 
     // Section titles — scroll triggered with mobile-friendly start

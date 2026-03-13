@@ -25,7 +25,7 @@
     <canvas id="particle-canvas"></canvas>
     <div id="app">
         
-        <!-- Header: Exact match to index.html for consistency -->
+        <!-- Header -->
         <header id="main-header" class="header">
             <div class="header-container container">
                 <a href="index.html" class="logo-link">
@@ -48,7 +48,6 @@
                             <a href="catalogo.html?categoria=camisetas" class="dropdown-link">Camisetas</a>
                             <a href="catalogo.html?categoria=conjuntos" class="dropdown-link">Conjuntos</a>
                             <a href="catalogo.html?categoria=pantalones" class="dropdown-link">Pantalones</a>
-                            <a href="catalogo.html?categoria=chaquetas" class="dropdown-link">Chaquetas</a>
                         </div>
                     </div>
                     <a href="contacto.html" class="nav-item">Contacto</a>
@@ -56,6 +55,11 @@
                 
                 <div class="header-icons">
                     <button class="icon-btn search-btn" aria-label="Buscar"><span class="icon-svg search-icon"></span></button>
+                    <!-- Wishlist Token -->
+                    <button class="icon-btn wishlist-header-btn" aria-label="Favoritos" id="header-wishlist-btn">
+                        <span class="icon-svg heart-icon-header"></span>
+                        <span class="wishlist-badge">0</span>
+                    </button>
                     <!-- Auth Icons -->
                     <button class="icon-btn login-btn" id="header-login-btn" aria-label="Iniciar Sesión">
                         <span class="icon-svg user-icon"></span>
@@ -81,16 +85,16 @@
                 <!-- Left Column: Image -->
                 <div class="pdp-gallery-col">
                     <div class="pdp-main-img-wrap">
-                        <img src="./src/assets/img/productos/482977307_635815789076836_2091117348083358970_n.jpg" alt="Buzo Oversize Premium" class="pdp-main-img" id="pdp-main-img">
+                        <img src="./src/assets/img/productos/482977307_635815789076836_2091117348083358970_n.jpg" alt="Producto" class="pdp-main-img" id="pdp-main-img">
                     </div>
                 </div>
 
                 <!-- Right Column: Product Info -->
                 <div class="pdp-info-col">
-                    <h1 class="pdp-title-main" id="pdp-title">BUZO OVERSIZE PREMIUM</h1>
+                    <h1 class="pdp-title-main" id="pdp-title">CARGANDO...</h1>
                     
                     <div class="pdp-price-wrap">
-                        <span class="pdp-price-main" id="pdp-price">$35.00</span>
+                        <span class="pdp-price-main" id="pdp-price">$0.00</span>
                         <span class="pdp-tax-note">IMPUESTOS INCLUIDOS.</span>
                     </div>
 
@@ -100,11 +104,7 @@
                         <div class="pdp-config-group mt-xl">
                             <h4 class="pdp-config-label">Talla</h4>
                             <div class="pdp-size-boxes" id="pdp-size-selector">
-                                <button class="btn-size-box" data-size="S">S</button>
-                                <button class="btn-size-box" data-size="M">M</button>
-                                <button class="btn-size-box active" data-size="L">L</button>
-                                <button class="btn-size-box" data-size="XL">XL</button>
-                                <button class="btn-size-box" data-size="XXL">XXL</button>
+                                <!-- JS Injected -->
                             </div>
                         </div>
 
@@ -112,9 +112,7 @@
                         <div class="pdp-config-group mt-md">
                             <h4 class="pdp-config-label">Color</h4>
                             <div class="pdp-color-swatches" id="pdp-color-swatches">
-                                <div class="swatch active" style="background: #000;" data-color="Negro"></div>
-                                <div class="swatch" style="background: #e63946;" data-color="Rojo"></div>
-                                <div class="swatch" style="background: #f4f4f4; border: 1px solid #ddd;" data-color="Blanco"></div>
+                                <!-- JS Injected -->
                             </div>
                         </div>
                     </div>
@@ -169,7 +167,7 @@
                 <div class="footer-col">
                     <h4>Soporte</h4>
                     <ul>
-                        <li><a href="#">Contacto</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
                         <li><a href="#">Políticas de Privacidad</a></li>
                         <li><a href="#">Términos y Condiciones</a></li>
                     </ul>
@@ -183,26 +181,12 @@
                         <a href="https://www.instagram.com" class="social-btn" aria-label="Instagram" target="_blank">
                             <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                         </a>
-                        <a href="https://www.tiktok.com" class="social-btn" aria-label="TikTok" target="_blank">
-                            <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5v3a3 3 0 0 1-3-3v11a4 4 0 1 1-6-4z"></path></svg>
-                        </a>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2026 Ellel Oversize. Todos los derechos reservados.</p>
                 <a href="privacidad.html" class="terms-link-bottom">Términos y políticas</a>
-                <div class="social-icons-wrapper mobile-only-flex">
-                    <a href="https://www.facebook.com" class="social-btn-minimal" aria-label="Facebook" target="_blank">
-                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2.04c-5.5 0-10 4.49-10 10.02 0 5 3.66 9.15 8.44 9.9v-7H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.89 3.78-3.89 1.09 0 2.23.19 2.23.19v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.9h-2.33v7a10 10 0 0 0 8.44-9.9c0-5.53-4.5-10.02-10-10.02Z"/></svg>
-                    </a>
-                    <a href="https://www.instagram.com" class="social-btn-minimal" aria-label="Instagram" target="_blank">
-                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.22.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.05.41 2.22.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.22-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.05.36-2.22.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.22-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.05-.41-2.22C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.22.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.05-.36 2.22-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07c-1.27.06-2.14.26-2.9.56-.78.3-1.44.73-2.1 1.39-.66.66-1.09 1.32-1.39 2.1-.3.76-.5 1.63-.56 2.9C.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.14.56 2.9.3.78.73 1.44 1.39 2.1.66.66 1.32 1.09 2.1 1.39.76.3 1.63.5 2.9.56 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c1.27-.06 2.14-.26 2.9-.56.78-.3 1.44-.73 2.1-1.39.66-.66 1.09-1.32 1.39-2.1.3-.76.5-1.63.56-2.9.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.14-.56-2.9-.3-.78-.73-1.44-1.39-2.1-.66-.66-1.32-1.09-2.1-1.39-.76-.3-1.63-.5-2.9-.56C15.67.01 15.26 0 12 0Zm0 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84Zm0 10.16A4 4 0 1 1 16 12a4 4 0 0 1-4 4Zm5.8-10.43a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0Z"/></svg>
-                    </a>
-                    <a href="https://www.tiktok.com" class="social-btn-minimal" aria-label="TikTok" target="_blank">
-                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93v8.12a8.36 8.36 0 0 1-8.36 8.36A8.36 8.36 0 0 1 0 16.21a8.36 8.36 0 0 1 8.36-8.36c.19 0 .38.01.57.02v4.04c-.19-.02-.38-.03-.57-.03-2.31 0-4.18 1.87-4.18 4.18s1.87 4.18 4.18 4.18 4.18-1.87 4.18-4.18V.02h4z"/></svg>
-                    </a>
-                </div>
             </div>
         </footer>
     </div>
@@ -210,8 +194,10 @@
     <!-- Modals & Overlays -->
     <div id="cart-container"></div>
     <div id="checkout-container"></div>
+    <div id="wishlist-container"></div>
+    <div id="auth-container"></div>
 
-    <!-- Mobile Menu Slide-out -->
+    <!-- Mobile Menu -->
     <div class="mobile-menu-overlay" id="mobile-menu">
         <div class="menu-header">
             <img src="./src/assets/img/logo-square.png" alt="Logo">
@@ -230,14 +216,13 @@
                         <li><a href="catalogo.html?categoria=camisetas" class="mobile-sublink">CAMISETAS</a></li>
                         <li><a href="catalogo.html?categoria=conjuntos" class="mobile-sublink">CONJUNTOS</a></li>
                         <li><a href="catalogo.html?categoria=pantalones" class="mobile-sublink">PANTALONES</a></li>
-                        <li><a href="catalogo.html?categoria=chaquetas" class="mobile-sublink">CHAQUETAS</a></li>
                     </ul>
                 </li>
             </ul>
         </nav>
     </div>
 
-    <!-- Floating WhatsApp -->
+    <!-- WhatsApp -->
     <a href="https://wa.me/123456789" class="whatsapp-float premium-shadow" aria-label="Asistencia WhatsApp" target="_blank">
         <svg viewBox="0 0 24 24"><path d="M12.03 2.5a9.5 9.5 0 106.84 16.03l2.84.95-.97-2.77A9.5 9.5 0 0012.03 2.5zm0 17.1a7.6 7.6 0 01-3.87-1.05l-.28-.16-2.12.72.73-2.07-.18-.28A7.6 7.6 0 1112.03 19.6zm4.18-5.71c-.23-.12-1.36-.67-1.57-.75-.21-.08-.36-.12-.52.12-.15.24-.59.75-.72.9-.13.15-.26.17-.49.05a6.25 6.25 0 01-1.84-1.13 6.9 6.9 0 01-1.27-1.58c-.13-.22-.01-.34.1-.45.11-.1.23-.27.35-.4.12-.14.16-.24.24-.4.07-.16.04-.3-.02-.41-.06-.11-.52-1.25-.71-1.71-.19-.45-.38-.39-.52-.4-.14-.01-.3-.01-.46-.01-.16 0-.42.06-.64.3s-.84.82-.84 2a5.75 5.75 0 001.2 3.05c.15.2 2.08 3.18 5.04 4.46.7.3 1.25.48 1.68.61.7.22 1.34.19 1.85.11.57-.08 1.76-.72 2.01-1.42.25-.7.25-1.3.17-1.42-.08-.12-.3-.19-.53-.3z"/></svg>
     </a>
@@ -245,7 +230,8 @@
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="./src/scripts/particleCursor.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
+    <script src="src/scripts/antigravity3D.js"></script>
     <script type="module" src="./src/scripts/index.js"></script>
     <script type="module" src="./src/scripts/ProductDetail.js"></script>
 </body>

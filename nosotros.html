@@ -433,12 +433,17 @@
                             <a href="catalogo.html?categoria=camisetas" class="dropdown-link">Camisetas</a>
                             <a href="catalogo.html?categoria=conjuntos" class="dropdown-link">Conjuntos</a>
                             <a href="catalogo.html?categoria=pantalones" class="dropdown-link">Pantalones</a>
-                            <a href="catalogo.html?categoria=chaquetas" class="dropdown-link">Chaquetas</a>
                         </div>
                     </div>
                     <a href="contacto.html" class="nav-item">Contacto</a>
                 </nav>
                 <div class="header-icons">
+                    <button class="icon-btn search-btn" aria-label="Buscar"><span class="icon-svg search-icon"></span></button>
+                    <!-- Wishlist Token -->
+                    <button class="icon-btn wishlist-header-btn" aria-label="Favoritos" id="header-wishlist-btn">
+                        <span class="icon-svg heart-icon-header"></span>
+                        <span class="wishlist-badge">0</span>
+                    </button>
                     <button class="icon-btn cart-btn" aria-label="Carrito" id="open-cart-btn-main">
                         <span class="icon-svg bag-icon"></span>
                         <span class="cart-badge">0</span>
@@ -586,7 +591,8 @@
     </a>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="./src/scripts/particleCursor.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
+    <script src="src/scripts/antigravity3D.js"></script>
     <script type="module">
         import { MiniCart } from './src/components/cart/MiniCart.js';
         import { CheckoutModal } from './src/components/forms/CheckoutForm.js';
@@ -659,12 +665,18 @@
                 }, { threshold: 0.3 });
                 statsObserver.observe(statsBar);
             }
-
-            // Scroll-driven header
-            window.addEventListener('scroll', () => {
-                document.getElementById('main-header')?.classList.add('scrolled');
-            }, { passive: true });
         });
     </script>
+    <div id="cart-container"></div>
+    <div id="checkout-container"></div>
+    <div id="wishlist-container"></div>
+    <div id="auth-container"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
+    <script src="src/scripts/antigravity3D.js"></script>
+    <script type="module" src="./src/scripts/index.js"></script>
 </body>
 </html>
