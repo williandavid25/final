@@ -11,6 +11,7 @@
  * 4. Add your domain to "Authorized JavaScript origins"
  * 5. Replace GOOGLE_CLIENT_ID below with your real client ID
  */
+import { HistoryManager } from './utils.js';
 
 export const GOOGLE_CLIENT_ID = '440096429908-li0naluh0idbvqo3rn8hhbma55nm0i75.apps.googleusercontent.com';
 
@@ -189,6 +190,7 @@ export function openAuthModal() {
     const modal = document.getElementById('auth-modal-overlay');
     if (!modal) return;
     modal.classList.add('active');
+    HistoryManager.pushState('auth', () => closeAuthModal());
 
     // Try to render Google button (may not have been available on page load)
     if (window.google?.accounts?.id && !currentUser) {
@@ -211,5 +213,8 @@ export function openAuthModal() {
 
 export function closeAuthModal() {
     const modal = document.getElementById('auth-modal-overlay');
-    if (modal) modal.classList.remove('active');
+    if (modal) {
+        modal.classList.remove('active');
+        HistoryManager.popState('auth');
+    }
 }

@@ -1,6 +1,7 @@
 /**
  * Global Wishlist State Management
  */
+import { HistoryManager } from './utils.js';
 
 let wishlistItems = [];
 let isWishlistInitialized = false;
@@ -51,14 +52,20 @@ function saveWishlist() {
 
 export function openWishlist() {
     const overlay = document.getElementById('wishlist-overlay');
-    if (overlay) overlay.classList.add('active');
+    if (overlay) {
+        overlay.classList.add('active');
+        HistoryManager.pushState('wishlist', () => closeWishlist());
+    }
     document.body.classList.add('wishlist-open');
     renderWishlist();
 }
 
 export function closeWishlist() {
     const overlay = document.getElementById('wishlist-overlay');
-    if (overlay) overlay.classList.remove('active');
+    if (overlay) {
+        overlay.classList.remove('active');
+        HistoryManager.popState('wishlist');
+    }
     document.body.classList.remove('wishlist-open');
 }
 

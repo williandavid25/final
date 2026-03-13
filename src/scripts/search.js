@@ -4,6 +4,7 @@
  * across: nombre, descripcion, categoria, genero.
  * Opens search modal on search-btn click in any page.
  */
+import { HistoryManager } from './utils.js';
 
 let productsCache = null;
 
@@ -87,6 +88,7 @@ function openSearchModal() {
     const overlay = document.getElementById('search-modal-overlay');
     if (overlay) {
         overlay.classList.add('active');
+        HistoryManager.pushState('search', () => closeSearchModal());
         const input = document.getElementById('search-input');
         if (input) { input.focus(); input.value = ''; }
         renderResults([], '');
@@ -95,7 +97,10 @@ function openSearchModal() {
 
 function closeSearchModal() {
     const overlay = document.getElementById('search-modal-overlay');
-    if (overlay) overlay.classList.remove('active');
+    if (overlay) {
+        overlay.classList.remove('active');
+        HistoryManager.popState('search');
+    }
 }
 
 // ── Init ──────────────────────────────────────────────────────

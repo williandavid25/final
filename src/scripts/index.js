@@ -8,9 +8,13 @@ import { initGoogleAuth, openAuthModal, closeAuthModal, signOut, simulateEmailAu
 import { initSearch } from './search.js';
 import { WishlistDrawer } from '../components/wishlist/WishlistDrawer.js';
 import { initWishlist, toggleWishlist, openWishlist } from './wishlistState.js';
+import { HistoryManager } from './utils.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
     console.log('Aplicación iniciada');
+    
+    // Initialize History Manager for navigation
+    HistoryManager.init();
     
     // Iniciar animaciones globales de GSAP
     initAnimations();
@@ -227,7 +231,10 @@ function setupUIInteractions() {
         checkoutBtn.addEventListener('click', procesarCompraWhatsApp);
     }
     if (closeCheckoutBtn && checkoutOverlay) {
-        closeCheckoutBtn.addEventListener('click', () => checkoutOverlay.classList.remove('active'));
+        closeCheckoutBtn.addEventListener('click', () => {
+            HistoryManager.popState('checkout');
+            checkoutOverlay.classList.remove('active');
+        });
     }
 
     // Mobile Menu Actions
@@ -237,11 +244,17 @@ function setupUIInteractions() {
     const mobileLinks = document.querySelectorAll('.mobile-link, .mobile-sublink');
 
     if (menuBtn && mobileMenu) {
-        menuBtn.addEventListener('click', () => mobileMenu.classList.add('active'));
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            HistoryManager.pushState('mobile-menu', () => mobileMenu.classList.remove('active'));
+        });
     }
     
     if (closeMenuBtn && mobileMenu) {
-        closeMenuBtn.addEventListener('click', () => mobileMenu.classList.remove('active'));
+        closeMenuBtn.addEventListener('click', () => {
+            HistoryManager.popState('mobile-menu');
+            mobileMenu.classList.remove('active');
+        });
     }
 
     // Smooth scroll and auto-close upon selecting a link
@@ -253,8 +266,11 @@ function setupUIInteractions() {
                 const targetId = link.getAttribute('href').substring(1);
                 const targetSection = document.getElementById(targetId);
                 
-                // Close menu
-                if (mobileMenu) mobileMenu.classList.remove('active');
+                    // Close menu
+                    if (mobileMenu) {
+                        HistoryManager.popState('mobile-menu');
+                        mobileMenu.classList.remove('active');
+                    }
                 
                 // Scroll if section exists
                 if (targetSection) {
