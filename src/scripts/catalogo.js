@@ -7,6 +7,9 @@ import { ProductCard } from '../components/product/ProductCard.js';
 import { MiniCart } from '../components/cart/MiniCart.js';
 import { CheckoutModal } from '../components/forms/CheckoutForm.js';
 import { initCart, addToCart, openCart, procesarCompraWhatsApp } from './cartState.js';
+import { WishlistDrawer } from '../components/wishlist/WishlistDrawer.js';
+import { initWishlist, toggleWishlist, openWishlist } from './wishlistState.js';
+import { initProductClickAnimations } from './animations.js';
 
 // -------------------------------
 // Config maps for display labels
@@ -36,7 +39,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     const checkoutContainer = document.getElementById('checkout-container');
     if (checkoutContainer) checkoutContainer.innerHTML = CheckoutModal();
 
+    const wishlistContainer = document.getElementById('wishlist-container');
+    if (wishlistContainer) wishlistContainer.innerHTML = WishlistDrawer();
+
     initCart();
+    initWishlist();
+    initProductClickAnimations();
     setupMenuInteractions();
 
     // Parse URL params
@@ -323,4 +331,32 @@ function setupMenuInteractions() {
             if (query) alert(`Buscando "${query}"...`);
         });
     }
+
+    // Wishlist Event Delegation
+    document.addEventListener('click', (e) => {
+        const heartBtn = e.target.closest('.heart-icon-btn');
+        if (heartBtn) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const card = heartBtn.closest('.product-card');
+            if (card) {
+                const id = heartBtn.dataset.id;
+                const name = card.querySelector('.product-title')?.textContent || 'Producto';
+                const priceStr = card.querySelector('.product-price')?.textContent || '0';
+                const price = parseFloat(priceStr.replace(/[^0-9.-]+/g,""));
+                const img = card.querySelector('.product-img')?.src;
+                
+                toggleWishlist({ id, name, price, img });
+            }
+        }
+    });
+
+    // Header Wishlist Button
+    document.querySelectorAll('.wishlist-btn-toggle').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openWishlist();
+        });
+    });
 }

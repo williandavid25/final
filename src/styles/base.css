@@ -163,6 +163,7 @@ button, input, select, textarea {
     overflow: hidden;
     display: flex;
     align-items: center; /* Changed from flex-end to center for better balance with shorter height */
+    background-color: #000; /* Fondo negro mientras carga el video */
 }
 
 /* The video itself — always covers full section */
@@ -175,6 +176,12 @@ button, input, select, textarea {
     object-position: center 60%;   /* frame the outfit, not the dark top */
     z-index: 0;
     pointer-events: none;
+    opacity: 0; /* Oculto inicialmente */
+    transition: opacity 1.5s ease-in-out; /* Transición suave */
+}
+
+.video-hero__bg.video-loaded {
+    opacity: 1; /* Mostrar cuando cargue */
 }
 
 /* Gradient overlay: dark at bottom for text, transparent at top */
@@ -301,4 +308,63 @@ button, input, select, textarea {
         height: 65vh; /* slightly shorter on mobile for better scrolling */
         min-height: 480px;
     }
+}
+
+/* Minimal Footer - Requested as per image */
+.minimal-footer {
+    padding: 4rem 0;
+    text-align: center;
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-main);
+}
+
+.footer-copy {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+    opacity: 0.8;
+}
+
+.footer-links {
+    margin-bottom: 1.5rem;
+}
+
+.footer-links a {
+    font-size: 0.9rem;
+    text-decoration: underline;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.footer-links a:hover {
+    opacity: 1;
+}
+
+.footer-socials {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.footer-socials .social-btn {
+    color: var(--color-text-main);
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.footer-socials .social-btn:hover {
+    opacity: 1;
+    transform: translateY(-3px);
+}
+
+/* Antigravity floating effect */
+.btn-antigravedad {
+    animation: float 3.5s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
 }

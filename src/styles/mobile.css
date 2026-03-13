@@ -1,19 +1,6 @@
 /* Mobile Responsive Overrides fitting the new theme */
 
 @media (max-width: 768px) {
-    /* Responsive Logo scaling to prevent breaking header on phones */
-    .logo-link img {
-        height: 90px !important; /* Made significantly larger as requested */
-    }
-    
-    .logo-text {
-        font-size: 1.2rem !important; /* Slightly smaller to emphasize the logo image more */
-    }
-    
-    .logo-link {
-        gap: 8px !important;
-    }
-
     .header {
         padding: var(--space-sm) 0 !important; /* Restore normal padding for mobile */
     }
@@ -70,7 +57,7 @@
         width: 100vw;
         height: 100vh;
         z-index: 5000;
-        background: #f6f5f8; /* Color gris perla super claro del mockup */
+        background: #ffffff; /* White background for maximum contrast */
         display: flex;
         flex-direction: column;
         transform: translateX(100%);
@@ -90,16 +77,14 @@
     }
     
     .menu-header img {
-        height: 40px;
+        height: 60px !important; /* Increased from 40px */
     }
 
     .mobile-nav {
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 80vh; /* Centrado vertical */
-        margin-top: -50px;
+        padding: 40px 20px 100px; /* Padding for scrolling room */
+        min-height: calc(100vh - 80px); /* Adjust based on header height */
     }
 
     .main-menu-list {
@@ -113,7 +98,7 @@
     .mobile-link {
         font-family: var(--font-heading);
         font-weight: 900;
-        font-size: 1.4rem; /* Reduced from 2.2rem for better aesthetics */
+        font-size: 1.6rem; /* Slightly larger for easier tapping */
         color: #000;
         text-decoration: none;
         letter-spacing: 0.05em;
@@ -185,4 +170,3 @@
     .mobile-sublink:focus::after {
         width: 100%;
     }
-}

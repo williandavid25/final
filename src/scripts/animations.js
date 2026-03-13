@@ -141,3 +141,58 @@ export const animateProductCards = () => {
         }
     );
 };
+
+/**
+ * Handles professional click transition for product cards.
+ * Intercepts links and runs a GSAP sequence before navigating.
+ */
+export const initProductClickAnimations = () => {
+    // Create the overlay if it doesn't exist
+    if (!document.querySelector('.page-transition-overlay')) {
+        const overlay = document.createElement('div');
+        overlay.className = 'page-transition-overlay';
+        document.body.appendChild(overlay);
+    }
+
+    document.addEventListener('click', (e) => {
+        // Find the closest product link
+        const link = e.target.closest('.product-card a:not(.btn-quick-add):not(.heart-icon-btn)');
+        if (!link) return;
+
+        // Ensure it's a product interior link
+        const href = link.getAttribute('href');
+        if (!href || !href.includes('producto.html')) return;
+
+        e.preventDefault();
+        const card = link.closest('.product-card');
+        const overlay = document.querySelector('.page-transition-overlay');
+
+        if (card && overlay) {
+            // GSAP Sequence
+            const tl = gsap.timeline({
+                onComplete: () => {
+                    window.location.href = href;
+                }
+            });
+
+            // 1. Activate visual states
+            card.classList.add('is-clicked');
+            overlay.classList.add('active');
+
+            // 2. Animation sequence
+            tl.to(card, {
+                y: -15,
+                scale: 1.08,
+                duration: 0.4,
+                ease: "power2.out"
+            })
+            .to(overlay, {
+                backgroundColor: 'rgba(0,0,0,0.8)',
+                duration: 0.5
+            }, 0); // Parallel
+        } else {
+            // Fallback
+            window.location.href = href;
+        }
+    });
+};

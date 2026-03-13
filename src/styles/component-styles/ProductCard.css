@@ -33,6 +33,36 @@
     border-color: rgba(111,62,205,0.1);
 }
 
+/* Professional Click Animation State */
+.product-card.is-clicked {
+    z-index: 1000 !important;
+    transform: scale(1.05) translateY(-5px) !important;
+    box-shadow: 0 30px 60px rgba(254, 189, 1, 0.4) !important; /* Brand Yellow Glow */
+    border-color: var(--color-accent-yellow) !important;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1) !important;
+}
+
+.product-card.is-clicked .product-img {
+    filter: brightness(1.1) contrast(1.05);
+}
+
+/* Cinematic Page Transition Overlay */
+.page-transition-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(4px);
+    z-index: 999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.page-transition-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
 .product-badge {
     position: absolute;
     top: var(--space-sm); left: var(--space-sm);

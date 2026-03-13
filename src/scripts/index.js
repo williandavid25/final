@@ -1,4 +1,4 @@
-import { initAnimations, animateProductCards } from './animations.js';
+import { initAnimations, animateProductCards, initProductClickAnimations } from './animations.js';
 import { ProductGrid } from '../components/product/ProductGrid.js';
 import { MiniCart } from '../components/cart/MiniCart.js';
 import { CheckoutModal } from '../components/forms/CheckoutForm.js';
@@ -6,6 +6,8 @@ import { initCart, addToCart, openCart, procesarCompraWhatsApp } from './cartSta
 import { AuthModal } from '../components/auth/AuthModal.js';
 import { initGoogleAuth, openAuthModal, closeAuthModal, signOut, simulateEmailAuth, updateCartAuthUI, updateHeaderAuthUI, getUser } from './auth.js';
 import { initSearch } from './search.js';
+import { WishlistDrawer } from '../components/wishlist/WishlistDrawer.js';
+import { initWishlist, toggleWishlist, openWishlist } from './wishlistState.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
     console.log('Aplicación iniciada');
@@ -24,8 +26,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     const authContainer = document.getElementById('auth-container');
     if (authContainer) authContainer.innerHTML = AuthModal();
 
+    // Inject Wishlist Drawer
+    const wishlistContainer = document.getElementById('wishlist-container');
+    if (wishlistContainer) wishlistContainer.innerHTML = WishlistDrawer();
+
     // 2. Inicializar Estado del Carrito y Lógica DOM
     initCart();
+    initWishlist();
+    initProductClickAnimations();
     setupUIInteractions();
     setupAuthInteractions();
     initSearch(); // Live product search
@@ -342,6 +350,34 @@ function setupUIInteractions() {
     
     // Interactive 360 Logo Rotation
     setupLogoRotation();
+
+    // Heart Icon Click Handling (Event Delegation for dynamic cards)
+    document.addEventListener('click', (e) => {
+        const heartBtn = e.target.closest('.heart-icon-btn');
+        if (heartBtn) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const card = heartBtn.closest('.product-card');
+            if (card) {
+                const id = heartBtn.dataset.id;
+                const name = card.querySelector('.product-title')?.textContent || 'Producto';
+                const priceStr = card.querySelector('.product-price')?.textContent || '0';
+                const price = parseFloat(priceStr.replace(/[^0-9.-]+/g,""));
+                const img = card.querySelector('.product-img')?.src;
+                
+                toggleWishlist({ id, name, price, img });
+            }
+        }
+    });
+
+    // Wishlist Toggle Buttons (Header)
+    document.querySelectorAll('.wishlist-btn-toggle').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openWishlist();
+        });
+    });
 }
 
 /**

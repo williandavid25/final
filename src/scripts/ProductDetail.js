@@ -3,13 +3,19 @@
  * Handles size selection, color swapping, quantity calculation and adding to cart.
  */
 import { initCart, addToCart, openCart, procesarCompraWhatsApp } from './cartState.js';
+import { WishlistDrawer } from '../components/wishlist/WishlistDrawer.js';
+import { initWishlist, toggleWishlist, openWishlist } from './wishlistState.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
     // Only run if we are on the product detail page
     if (!document.getElementById('pdp-main-img')) return;
     
-    // Init Cart Logic Globally Here too
+    // Inject wishlist drawer
+    const wishlistContainer = document.getElementById('wishlist-container');
+    if (wishlistContainer) wishlistContainer.innerHTML = WishlistDrawer();
+
     initCart();
+    initWishlist();
 
     // --- Dynamic Data Loading ---
     const urlParams = new URLSearchParams(window.location.search);
@@ -143,24 +149,35 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     // --- Favorite Toggle ---
-    const toggleFavorite = () => {
-        isFavorited = !isFavorited;
-        if (isFavorited) {
-            btnFavorite.classList.add('is-favorite');
-        } else {
-            btnFavorite.classList.remove('is-favorite');
-        }
-        if (window.gsap) {
-             gsap.fromTo(btnFavorite, { scale: 0.8 }, { scale: 1, duration: 0.5, ease: "elastic.out(1, 0.3)" });
-        }
+    const toggleFavoritePDP = () => {
+        const titleEl = document.getElementById('pdp-title');
+        const priceEl = document.getElementById('pdp-price');
+        const mainImg = document.getElementById('pdp-main-img');
+        
+        const priceStr = priceEl?.textContent || '0';
+        const price = parseFloat(priceStr.replace(/[^0-9.-]+/g,"")) || 0;
+        
+        toggleWishlist({
+            id: productId || "custom-product",
+            name: titleEl?.textContent || "Producto",
+            price: price,
+            img: mainImg?.src || ""
+        });
     };
 
-    if (btnFavorite) btnFavorite.addEventListener('click', toggleFavorite);
+    if (btnFavorite) btnFavorite.addEventListener('click', toggleFavoritePDP);
     if (clickFavRow) clickFavRow.addEventListener('click', (e) => {
-        // Prevent double trigger if clicking exactly on the icon
         if(e.target !== btnFavorite && !btnFavorite.contains(e.target)){
-            toggleFavorite();
+            toggleFavoritePDP();
         }
+    });
+
+    // Header Wishlist Toggle
+    document.querySelectorAll('.wishlist-btn-toggle').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openWishlist();
+        });
     });
 
     // --- Add/Buy Buttons ---
