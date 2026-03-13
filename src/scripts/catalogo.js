@@ -19,7 +19,6 @@ const CATEGORIA_META = {
     camisetas:  { label: 'Camisetas', heroTitle: 'CAMI<span>SETAS</span>', sub: 'Corte relajado · Tejidos premium.' },
     conjuntos:  { label: 'Conjuntos', heroTitle: 'CON<span>JUNTOS</span>', sub: 'El look completo en un solo movimiento.' },
     pantalones: { label: 'Pantalones', heroTitle: 'PANTA<span>LONES</span>', sub: 'Cargo, wide-leg y relaxed fit.' },
-    chaquetas:  { label: 'Chaquetas', heroTitle: 'CHA<span>QUETAS</span>', sub: 'Estilo sin importar el clima.' },
 };
 
 const GENERO_META = {
@@ -97,21 +96,21 @@ function updateHero(categoria, genero) {
 
     if (categoria && CATEGORIA_META[categoria]) {
         const m = CATEGORIA_META[categoria];
-        labelEl.textContent = m.label;
-        titleEl.innerHTML   = m.heroTitle;
-        subEl.textContent   = m.sub;
-        document.title      = `${m.label} | Ellel Oversize`;
+        if (labelEl) labelEl.textContent = m.label;
+        if (titleEl) titleEl.innerHTML   = m.heroTitle;
+        if (subEl) subEl.textContent     = m.sub;
+        document.title = `${m.label} | Ellel Oversize`;
     } else if (genero && GENERO_META[genero]) {
         const m = GENERO_META[genero];
-        labelEl.textContent = m.label;
-        titleEl.innerHTML   = m.heroTitle;
-        subEl.textContent   = m.sub;
-        document.title      = `${m.label} | Ellel Oversize`;
+        if (labelEl) labelEl.textContent = m.label;
+        if (titleEl) titleEl.innerHTML   = m.heroTitle;
+        if (subEl) subEl.textContent     = m.sub;
+        document.title = `${m.label} | Ellel Oversize`;
     } else {
-        labelEl.textContent = 'Colección Completa';
-        titleEl.innerHTML   = 'TODOS LOS <span>MODELOS</span>';
-        subEl.textContent   = 'Streetwear oversize de calidad premium';
-        document.title      = 'Catálogo | Ellel Oversize';
+        if (labelEl) labelEl.textContent = 'Colección Completa';
+        if (titleEl) titleEl.innerHTML   = 'TODOS LOS <span>MODELOS</span>';
+        if (subEl) subEl.textContent     = 'Streetwear oversize de calidad premium';
+        document.title = 'Catálogo | Ellel Oversize';
     }
 }
 
@@ -120,58 +119,40 @@ function updateHero(categoria, genero) {
 // -------------------------------
 function buildFilterChips(products, activeCat, activeGen) {
     const container = document.getElementById('filter-chips');
+    if (!container) return;
 
     const chipsConfig = [
         { label: 'Todos',      cat: null,       gen: null },
-        { label: '♂ Hombre',  cat: null,       gen: 'hombre' },
-        { label: '♀ Mujer',   cat: null,       gen: 'mujer' },
+        { label: '<span>♂</span> Hombre',  cat: null,       gen: 'hombre' },
+        { label: '<span>♀</span> Mujer',   cat: null,       gen: 'mujer' },
         { label: 'Buzos',      cat: 'buzos',    gen: null },
         { label: 'Camisetas',  cat: 'camisetas', gen: null },
         { label: 'Conjuntos',  cat: 'conjuntos', gen: null },
         { label: 'Pantalones', cat: 'pantalones', gen: null },
-        { label: 'Chaquetas',  cat: 'chaquetas', gen: null },
     ];
 
     container.innerHTML = chipsConfig.map(chip => {
         const isActive = (chip.cat === activeCat && chip.gen === activeGen) ? 'active' : '';
-        return `<button class="chip ${isActive}" data-cat="${chip.cat || ''}" data-gen="${chip.gen || ''}">${chip.label}</button>`;
+        return `<button class="filter-chip ${isActive}" data-cat="${chip.cat || ''}" data-gen="${chip.gen || ''}">${chip.label}</button>`;
     }).join('');
 
-    container.querySelectorAll('.chip').forEach(chip => {
+    // Cinematic Entrance Stagger
+    gsap.from(".filter-chip", {
+        y: 20,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.05,
+        ease: "expo.out",
+        clearProps: "all"
+    });
+
+    container.querySelectorAll('.filter-chip').forEach(chip => {
         chip.addEventListener('click', (e) => {
-            const btn = e.target;
+            const btn = e.currentTarget;
             if (btn.classList.contains('active')) return;
 
-            // Ripple/Glow Animation with brand colors
-            btn.classList.add('animating');
-            
-            // GSAP Timeline for professional feel
-            const tl = gsap.timeline({
-                onComplete: () => btn.classList.remove('animating')
-            });
-
-            tl.to(btn, { 
-                scale: 0.92, 
-                duration: 0.1, 
-                ease: "power2.in" 
-            })
-            .to(btn, { 
-                scale: 1.08, 
-                backgroundColor: "#FEBD01", // Brand Yellow
-                color: "#000",
-                duration: 0.3, 
-                ease: "back.out(3)" 
-            })
-            .to(btn, { 
-                scale: 1, 
-                backgroundColor: "#000", 
-                color: "#fff",
-                duration: 0.4, 
-                ease: "power2.out"
-            });
-
             // Remove active from others
-            container.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+            container.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
             // Add to current
             btn.classList.add('active');
 
@@ -180,24 +161,20 @@ function buildFilterChips(products, activeCat, activeGen) {
             const sort = document.getElementById('sort-select').value;
 
             updateHero(cat, gen);
-            
-            // Animate grid items entry
-            const filteredProducts = applyFilters(products, cat, gen, sort);
-            renderProducts(filteredProducts);
+            renderProducts(applyFilters(products, cat, gen, sort));
 
-            // GSAP Stagger animation for new products with a slight rotation/scale
-            gsap.from(".product-card", {
-                y: 50,
-                scale: 0.95,
-                rotationX: 10,
-                opacity: 0,
-                duration: 0.8,
-                stagger: {
-                    each: 0.08,
-                    from: "start"
-                },
-                ease: "expo.out",
-                clearProps: "all"
+            // GSAP Professional 3D mechanical feedback
+            gsap.to(btn, { 
+                y: 4, 
+                duration: 0.15, 
+                ease: "power2.inOut",
+                onComplete: () => {
+                    gsap.to(btn, { 
+                        y: 2, 
+                        duration: 0.4, 
+                        ease: "elastic.out(1, 0.75)" 
+                    });
+                }
             });
 
             // Update URL without reload

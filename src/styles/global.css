@@ -41,6 +41,6 @@ ul, ol {
     left: 0;
     width: 100vw;
     height: 100vh;
-    pointer-events: none; /* Vital: permite hacer clic a través del canvas */
-    z-index: 0; /* Muy bajo para no bloquear NINGÚN elemento interactivo */
+    pointer-events: none;
+    z-index: -1; /* Higher safety behind everything */
 }

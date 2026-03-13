@@ -29,16 +29,13 @@
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="./src/styles/component-styles/Search.css">
 
     <!-- Preload critical video -->
     <link rel="preload" href="./src/assets/videos/hero-bg.mp4" as="video" type="video/mp4">
 </head>
-
 <body class="home-page">
     <canvas id="particle-canvas"></canvas>
     <div id="app">
-        <!-- Advanced Header -->
         <header id="main-header" class="header">
             <div class="header-container container">
                 <a href="/" class="logo-link">
@@ -62,7 +59,6 @@
                             <a href="catalogo.html?categoria=camisetas" class="dropdown-link">Camisetas</a>
                             <a href="catalogo.html?categoria=conjuntos" class="dropdown-link">Conjuntos</a>
                             <a href="catalogo.html?categoria=pantalones" class="dropdown-link">Pantalones</a>
-                            <a href="catalogo.html?categoria=chaquetas" class="dropdown-link">Chaquetas</a>
                         </div>
                     </div>
                 </nav>
@@ -70,6 +66,11 @@
                 <div class="header-icons">
                     <button class="icon-btn search-btn" aria-label="Buscar"><span
                             class="icon-svg search-icon"></span></button>
+                    <!-- Wishlist Token -->
+                    <button class="icon-btn wishlist-header-btn" aria-label="Favoritos" id="header-wishlist-btn">
+                        <span class="icon-svg heart-icon-header"></span>
+                        <span class="wishlist-badge">0</span>
+                    </button>
                     <!-- Auth Icons -->
                     <button class="icon-btn login-btn" id="header-login-btn" aria-label="Iniciar Sesión">
                         <span class="icon-svg user-icon"></span>
@@ -110,12 +111,12 @@
 
                 <!-- Content on top of video -->
                 <div class="video-hero__content container">
-                    <h1 class="hero-title">
+                    <h1 class="video-hero__title">
                         <span class="typewriter-line" id="typewriter-line1"></span><br>
                         TU <span class="text-gold typewriter-line" id="typewriter-line2"></span><span
                             class="typewriter-cursor" id="typewriter-cursor">|</span>
                     </h1>
-                    <p class="hero-subtitle">La comodidad extrema se encuentra con el diseño urbano.<br>Descubre
+                    <p class="video-hero__subtitle">La comodidad extrema se encuentra con el diseño urbano.<br>Descubre
                         los nuevos modelos oversize que marcarán la tendencia.</p>
                     <div class="hero-cta-group">
                         <a href="catalogo.html" class="btn btn-yellow pulse-anim shadow-hover btn-antigravedad"
@@ -235,7 +236,7 @@
                     <video id="brand-video" width="100%" height="auto" autoplay loop muted playsinline preload="auto"
                         poster="./src/assets/img/banners/1773290529084.png">
                         <source src="./src/assets/videos/Ellel_Video_Generado.mp4" type="video/mp4">
-                        Tu navegador no soporta reproducción de video.
+                        Tu navegador no soporta reproducción de video
                     </video>
                 </div>
             </div>
@@ -322,6 +323,7 @@
     <div id="checkout-container"></div>
     <div id="auth-container"></div>
     <div id="wishlist-container"></div>
+    <div id="wishlist-container"></div>
 
     <!-- Mobile Menu Slide-out (Same structure, enhanced CSS later) -->
     <div class="mobile-menu-overlay" id="mobile-menu">
@@ -346,10 +348,8 @@
                         <li><a href="catalogo.html?categoria=camisetas" class="mobile-sublink">CAMISETAS</a></li>
                         <li><a href="catalogo.html?categoria=conjuntos" class="mobile-sublink">CONJUNTOS</a></li>
                         <li><a href="catalogo.html?categoria=pantalones" class="mobile-sublink">PANTALONES</a></li>
-                        <li><a href="catalogo.html?categoria=chaquetas" class="mobile-sublink">CHAQUETAS</a></li>
                     </ul>
                 </li>
-            </ul>
         </nav>
     </div>
 
