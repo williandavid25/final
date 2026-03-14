@@ -7,6 +7,11 @@ main = "worker/index.js"
 # database_name = "ellel-db"
 # database_id = "4d8e2ec6-e83a-4f64-94a1-e7369dad88d3"
 
+[site]
+bucket = "public"
+
 [assets]
-directory = "./"
-exclude = [".git", "node_modules", "worker", "tmp"]
+directory = "./public"
+
+pages_build_output_dir = "public"
+
