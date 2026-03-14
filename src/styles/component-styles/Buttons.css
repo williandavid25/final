@@ -1,0 +1,145 @@
+/* src/styles/component-styles/Buttons.css */
+
+/* Paleta de Colores de Marca */
+:root {
+    --purple-main: #6d28d9;
+    --purple-light: rgba(109, 40, 217, 0.4);
+    --yellow-main: #fbbf24;
+    --yellow-dark: #b45309;
+}
+
+/* Base del Botón GPW para Filtros */
+.btn-gpw {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 2.2rem;
+    height: 50px; /* Ajustado para chips */
+    border-radius: 30px;
+    background-color: var(--purple-main);
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 0.12em;
+    overflow: hidden; /* Fundamental para el efecto líquido */
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    cursor: pointer;
+    border: none;
+    outline: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Efecto de olas líquidas */
+.gpw-wave {
+    position: absolute;
+    bottom: -150%;
+    left: 50%;
+    width: 200px; /* Ajustado para chips */
+    height: 200px;
+    border-radius: 40%;
+    transform: translateX(-50%);
+    opacity: 0;
+    z-index: 1;
+    transition: opacity 0.3s ease, bottom 0.5s ease;
+    pointer-events: none;
+}
+
+/* Gradientes de olas */
+.gpw-wave-1 { background: linear-gradient(0deg, var(--purple-main) 0%, #a78bfa 100%); transition-delay: 0.1s; }
+.gpw-wave-2 { background: linear-gradient(0deg, var(--purple-main) 0%, rgba(167, 139, 250, 0.5) 100%); transition-delay: 0.2s; }
+.gpw-wave-3 { background: linear-gradient(0deg, var(--purple-main) 0%, var(--yellow-main) 100%); transition-delay: 0.3s; opacity: 0.1; }
+.gpw-wave-4 { background: radial-gradient(circle at center, var(--yellow-main) 0%, rgba(0,0,0,0) 70%); transition-delay: 0.4s; }
+
+/* Destello dorado */
+.gpw-flare {
+    position: absolute;
+    top: 50%;
+    right: -100px;
+    width: 40px;
+    height: 40px;
+    background-image: radial-gradient(circle, #ffffff 0%, rgba(251, 191, 36, 0) 70%);
+    filter: blur(5px);
+    opacity: 0;
+    z-index: 2;
+    transform: translateY(-50%) rotate(45deg);
+    pointer-events: none;
+}
+
+/* El texto sobre el efecto */
+.btn-gpw_text {
+    position: relative;
+    z-index: 3;
+    transition: letter-spacing 0.5s ease, color 0.4s ease;
+}
+
+/* --- ESTADOS HOVER --- */
+
+.btn-gpw:hover {
+    background-color: #4c1d95;
+    box-shadow: 0 10px 30px rgba(251, 191, 36, 0.25);
+    transform: translateY(-3px);
+}
+
+.btn-gpw:hover .gpw-wave {
+    bottom: -80px;
+    opacity: 0.8;
+}
+
+.btn-gpw:hover .gpw-flare {
+    animation: GoldenFish 1s ease-in-out forwards;
+}
+
+.btn-gpw:hover .btn-gpw_text {
+    letter-spacing: 0.25em; /* Ajustado para chips */
+    color: var(--yellow-main);
+}
+
+/* --- ESTADO ACTIVO --- */
+.btn-gpw.active {
+    background: #000;
+    color: #fff;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.3), 0 0 20px rgba(111, 62, 205, 0.4);
+    transform: scale(1.05);
+}
+
+.btn-gpw.active .btn-gpw_text {
+    color: var(--yellow-main);
+}
+
+.btn-gpw.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30%;
+    height: 3px;
+    background: var(--yellow-main);
+    border-radius: 2px;
+    box-shadow: 0 0 10px var(--yellow-main);
+    z-index: 4;
+}
+
+/* Animación de Destello */
+@keyframes GoldenFish {
+    0% { right: -100px; opacity: 0; filter: blur(10px); }
+    30% { right: 20%; opacity: 1; filter: blur(5px); }
+    100% { right: 120%; opacity: 0; filter: blur(20px); }
+}
+
+/* Adaptación para Móvil */
+@media (max-width: 768px) {
+    .btn-gpw {
+        padding: 0.6rem 1.5rem;
+        height: 44px;
+        font-size: 0.75rem;
+        letter-spacing: 0.08em;
+    }
+    
+    .btn-gpw:hover .btn-gpw_text {
+        letter-spacing: 0.15em;
+    }
+}

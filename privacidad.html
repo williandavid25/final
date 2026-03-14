@@ -18,49 +18,14 @@
     <link rel="stylesheet" href="./src/styles/component-styles/Checkout.css">
     <link rel="stylesheet" href="./src/styles/component-styles/Wishlist.css">
     <link rel="stylesheet" href="./src/styles/mobile.css">
+    <link rel="stylesheet" href="./src/styles/component-styles/HeroSections.css">
 
     <style>
         body { background: #f8f8f8; }
 
         .privacy-page {
             min-height: 100vh;
-            padding-top: 140px; /* Increased for logo clearance */
-        }
-
-        .privacy-hero {
-            background: linear-gradient(135deg, #1a1a1a 0%, #111 100%);
-            color: white;
-            text-align: center;
-            padding: 4rem 1.5rem;
-        }
-
-        .privacy-hero-label {
-            display: inline-block;
-            background: var(--color-accent-yellow);
-            color: #000;
-            font-size: 0.72rem;
-            font-weight: 900;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            padding: 0.35rem 1.1rem;
-            border-radius: 999px;
-            margin-bottom: 1.2rem;
-        }
-
-        .privacy-hero h1 {
-            font-size: clamp(2.2rem, 6vw, 4rem);
-            font-weight: 900;
-            text-transform: uppercase;
-            color: white;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .privacy-hero h1 span { color: var(--color-accent-yellow); }
-
-        .privacy-hero p {
-            color: rgba(255,255,255,0.6);
-            font-size: 0.95rem;
-            margin-top: 0.8rem;
+            padding-top: 100px;
         }
 
         .privacy-body {
@@ -248,7 +213,6 @@
                             <a href="catalogo.html?categoria=camisetas" class="dropdown-link">Camisetas</a>
                             <a href="catalogo.html?categoria=conjuntos" class="dropdown-link">Conjuntos</a>
                             <a href="catalogo.html?categoria=pantalones" class="dropdown-link">Pantalones</a>
-                            <a href="catalogo.html?categoria=chaquetas" class="dropdown-link">Chaquetas</a>
                         </div>
                     </div>
                     <a href="nosotros.html" class="nav-item">Nosotros</a>
@@ -272,14 +236,15 @@
 
         <div class="privacy-page">
 
-            <!-- Hero -->
-            <div class="privacy-hero">
-                <div class="container">
-                    <span class="privacy-hero-label">Legal</span>
-                    <h1>POLÍTICA Y <span>PRIVACIDAD</span></h1>
+            <!-- Hero Refinado con Efecto Borroso -->
+            <section class="hero-section hero-privacidad">
+                <div class="hero-blur-layer"></div>
+                <div class="hero-content">
+                    <span class="badge-yellow">Legal</span>
+                    <h1>POLÍTICA Y <span class="text-yellow">PRIVACIDAD</span></h1>
                     <p>Última actualización: Marzo 2026</p>
                 </div>
-            </div>
+            </section>
 
             <!-- Content -->
             <div class="privacy-body">
@@ -362,7 +327,7 @@
             <!-- Minimal Footer -->
             <footer class="minimal-footer">
                 <div class="container">
-                    <p class="footer-copy">&copy; 2026 Libardino</p>
+                    <p class="footer-copy">&copy; 2026 Ellel Oversize</p>
                     <div class="footer-links">
                         <a href="privacidad.html">Términos y políticas</a>
                     </div>

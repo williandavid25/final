@@ -109,7 +109,12 @@ export function renderCart() {
         
         // Ensure get offer button pulse happens
         const getOfferBtn = document.getElementById('btn-get-offer');
-        if (getOfferBtn) getOfferBtn.classList.add('vibrate-anim');
+        if (getOfferBtn) {
+            getOfferBtn.classList.add('vibrate-anim');
+            getOfferBtn.addEventListener('click', () => {
+                window.location.href = 'catalogo.html?oferta=true';
+            });
+        }
         
     } else {
         // Show Filled View

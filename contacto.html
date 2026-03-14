@@ -15,12 +15,14 @@
     <link rel="stylesheet" href="./src/styles/global.css">
     <link rel="stylesheet" href="./src/styles/base.css">
     <link rel="stylesheet" href="./src/styles/component-styles/Header.css">
+    <link rel="stylesheet" href="./src/styles/component-styles/Auth.css">
+    <link rel="stylesheet" href="./src/styles/component-styles/Search.css">
     <link rel="stylesheet" href="./src/styles/component-styles/Cart.css">
     <link rel="stylesheet" href="./src/styles/component-styles/Checkout.css">
     <link rel="stylesheet" href="./src/styles/component-styles/Contact.css">
     <link rel="stylesheet" href="./src/styles/mobile.css">
     <link rel="stylesheet" href="./src/styles/component-styles/Wishlist.css">
-    <link rel="stylesheet" href="./src/styles/component-styles/Search.css">
+    <link rel="stylesheet" href="./src/styles/component-styles/Buttons.css">
 </head>
 <body class="bg-light-gray">
     <canvas id="particle-canvas"></canvas>
@@ -44,12 +46,16 @@
                 </a>
                 
                 <div class="header-icons">
-                    <button class="icon-btn search-btn" aria-label="Buscar">
-                        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                    </button>
                     <button class="icon-btn wishlist-btn-toggle" aria-label="Favoritos" style="position: relative;">
                         <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.72-8.72 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
                         <span class="wishlist-badge" style="display: none;">0</span>
+                    </button>
+                    <button class="icon-btn search-btn" aria-label="Buscar" id="header-search-btn">
+                        <span class="icon-svg search-icon"></span>
+                    </button>
+                    <!-- Auth Icons -->
+                    <button class="icon-btn login-btn" id="header-login-btn" aria-label="Iniciar Sesión">
+                        <span class="icon-svg user-icon"></span>
                     </button>
                     <button class="icon-btn cart-btn" aria-label="Carrito" id="open-cart-btn-main">
                         <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
@@ -108,7 +114,7 @@
         <!-- Minimal Footer -->
         <footer class="minimal-footer">
             <div class="container">
-                <p class="footer-copy">&copy; 2026 Libardino</p>
+                <p class="footer-copy">&copy; 2026 Ellel Oversize</p>
                 <div class="footer-links">
                     <a href="privacidad.html">Términos y políticas</a>
                 </div>

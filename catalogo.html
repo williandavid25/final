@@ -18,9 +18,13 @@
     <link rel="stylesheet" href="./src/styles/component-styles/ProductCard.css">
     <link rel="stylesheet" href="./src/styles/component-styles/Cart.css">
     <link rel="stylesheet" href="./src/styles/component-styles/Checkout.css">
+    <link rel="stylesheet" href="./src/styles/component-styles/Auth.css">
     <link rel="stylesheet" href="./src/styles/component-styles/Wishlist.css">
+    <link rel="stylesheet" href="./src/styles/component-styles/Search.css">
+    <link rel="stylesheet" href="./src/styles/component-styles/Wishlist.css">
+    <link rel="stylesheet" href="./src/styles/component-styles/HeroSections.css">
     <link rel="stylesheet" href="./src/styles/mobile.css">
-    <link rel="stylesheet" href="./src/styles/component-styles/Wishlist.css">
+    <link rel="stylesheet" href="./src/styles/component-styles/Buttons.css">
 
     <style>
         /* Page-specific styles for Catalog page */
@@ -266,13 +270,14 @@
                             <a href="catalogo.html?categoria=camisetas" class="dropdown-link">Camisetas</a>
                             <a href="catalogo.html?categoria=conjuntos" class="dropdown-link">Conjuntos</a>
                             <a href="catalogo.html?categoria=pantalones" class="dropdown-link">Pantalones</a>
-                            <a href="catalogo.html?categoria=chaquetas" class="dropdown-link">Chaquetas</a>
                         </div>
                     </div>
                 </nav>
 
                 <div class="header-icons">
-                    <button class="icon-btn search-btn" aria-label="Buscar"><span class="icon-svg search-icon"></span></button>
+                    <button class="icon-btn search-btn" aria-label="Buscar" id="header-search-btn">
+                        <span class="icon-svg search-icon"></span>
+                    </button>
                     <!-- Auth Icons -->
                     <button class="icon-btn login-btn" id="header-login-btn" aria-label="Iniciar Sesión">
                         <span class="icon-svg user-icon"></span>
@@ -297,14 +302,14 @@
 
         <div class="catalog-page">
             <!-- Hero Banner -->
-            <div class="catalog-hero" id="catalog-hero">
-                <div class="container">
-                    <span class="catalog-hero-label" id="hero-label">Colección Completa</span>
-                    <h1 class="catalog-hero-title" id="hero-title">TODOS LOS <span>MODELOS</span></h1>
-                    <p class="catalog-hero-sub" id="hero-sub">Streetwear oversize de calidad premium</p>
+            <section id="dynamic-hero" class="hero-section hero-categoria-todo">
+                <div class="hero-content">
+                    <span class="badge-yellow" id="hero-label">COLECCIÓN COMPLETA</span>
+                    <h1 id="hero-title">TODOS LOS <span class="text-yellow">MODELOS</span></h1>
+                    <p id="hero-sub">Streetwear oversize de calidad premium</p>
                     <p class="catalog-result-count" id="result-count"></p>
                 </div>
-            </div>
+            </section>
 
             <!-- Filter Chips Bar -->
             <div class="catalog-controls">
@@ -331,7 +336,7 @@
             <!-- Minimal Footer -->
             <footer class="minimal-footer">
                 <div class="container">
-                    <p class="footer-copy">&copy; 2026 Libardino</p>
+                    <p class="footer-copy">&copy; 2026 Ellel Oversize</p>
                     <div class="footer-links">
                         <a href="privacidad.html">Términos y políticas</a>
                     </div>
@@ -377,7 +382,6 @@
                         <li><a href="catalogo.html?categoria=camisetas" class="mobile-sublink">CAMISETAS</a></li>
                         <li><a href="catalogo.html?categoria=conjuntos" class="mobile-sublink">CONJUNTOS</a></li>
                         <li><a href="catalogo.html?categoria=pantalones" class="mobile-sublink">PANTALONES</a></li>
-                        <li><a href="catalogo.html?categoria=chaquetas" class="mobile-sublink">CHAQUETAS</a></li>
                     </ul>
                 </li>
             </ul>

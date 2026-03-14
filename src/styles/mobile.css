@@ -7,7 +7,21 @@
 
     /* Base typography adjustments */
     h1 {
-        font-size: 2rem;
+        font-size: clamp(2rem, 8vw, 2.5rem);
+    }
+
+    /* Hero Headline optimization */
+    .video-hero__title {
+        font-size: clamp(2rem, 10vw, 3rem) !important;
+        line-height: 1.1;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Antigravity button refinement for mobile */
+    .btn-antigravedad {
+        transform: rotate(-2deg); /* Subtle tilt for mobile */
+        font-size: 0.9rem !important;
+        padding: 0.8rem 1.8rem !important;
     }
     
     h2 {
@@ -29,8 +43,8 @@
     }
     
     .btn-yellow {
-        padding: 1rem var(--space-md);
-        font-size: 1.1rem;
+        padding: 0.8rem var(--space-md);
+        font-size: 1rem;
     }
 
     /* Modals */

@@ -10,7 +10,7 @@ export function initWishlist() {
     isWishlistInitialized = true;
     
     // Load from local storage
-    const saved = localStorage.getItem('libardino_wishlist');
+    const saved = localStorage.getItem('ellel_wishlist');
     if (saved) {
         try { 
             const parsed = JSON.parse(saved);
@@ -46,7 +46,7 @@ export function initWishlist() {
 }
 
 function saveWishlist() {
-    localStorage.setItem('libardino_wishlist', JSON.stringify(wishlistItems));
+    localStorage.setItem('ellel_wishlist', JSON.stringify(wishlistItems));
 }
 
 export function openWishlist() {

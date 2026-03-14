@@ -1,11 +1,13 @@
 export const ProductCard = (product) => {
     const isNewBadge = product.esNuevo ? `<span class="product-badge">NUEVO</span>` : '';
+    const isOfferBadge = product.enOferta ? `<span class="product-badge offer-badge" style="background: #ff3e3e; color: #fff; box-shadow: 0 0 10px rgba(255, 62, 62, 0.4); border: 1px solid rgba(255,255,255,0.2);">OFERTA</span>` : '';
     const imageSrc = product.imagenes && product.imagenes[0] ? product.imagenes[0] : 'https://via.placeholder.com/300x400/eeeeee/333333?text=Modelo';
     
     return `
         <article class="product-card" id="${product.id}" data-genero="${product.genero || ''}" data-categoria="${product.categoria || ''}">
             <div class="product-image-wrapper">
                 ${isNewBadge}
+                ${isOfferBadge}
                 <a href="producto.html?id=${product.id}" style="display: block; width: 100%; height: 100%;">
                     <img src="${imageSrc}" alt="${product.nombre}" class="product-img" loading="lazy">
                 </a>

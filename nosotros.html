@@ -14,10 +14,13 @@
     <link rel="stylesheet" href="./src/styles/global.css">
     <link rel="stylesheet" href="./src/styles/base.css">
     <link rel="stylesheet" href="./src/styles/component-styles/Header.css">
-    <link rel="stylesheet" href="./src/styles/component-styles/Cart.css">
+    <link rel="stylesheet" href="./src/styles/component-styles/Auth.css">
+    <link rel="stylesheet" href="./src/styles/component-styles/Search.css">
     <link rel="stylesheet" href="./src/styles/component-styles/Checkout.css">
     <link rel="stylesheet" href="./src/styles/component-styles/Wishlist.css">
     <link rel="stylesheet" href="./src/styles/mobile.css">
+    <link rel="stylesheet" href="./src/styles/component-styles/HeroSections.css">
+    <link rel="stylesheet" href="./src/styles/component-styles/Buttons.css">
 
     <style>
         /* ===================== CSS-FIRST ANIMATIONS ===================== */
@@ -46,88 +49,9 @@
         /* ===================== PAGE BASE ===================== */
         body { background: #f4f4f6; overflow-x: hidden; }
 
-        .about-page { min-height: 100vh; padding-top: 140px; } /* Increased for logo clearance */
+        .about-page { min-height: 100vh; padding-top: 100px; }
 
-        /* ===================== HERO ===================== */
-        .about-hero {
-            background: linear-gradient(140deg, #0e0e0e 0%, #1a0a2e 60%, #2c1a4e 100%);
-            color: white;
-            text-align: center;
-            padding: clamp(3rem, 10vw, 6rem) 1.5rem clamp(3rem, 8vw, 5rem);
-            position: relative;
-            overflow: hidden;
-        }
 
-        /* Animated background blobs */
-        .hero-blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(70px);
-            pointer-events: none;
-        }
-
-        .hero-blob-1 {
-            width: clamp(200px, 50vw, 450px);
-            height: clamp(200px, 50vw, 450px);
-            background: rgba(111, 62, 205, 0.35);
-            top: -80px; right: -60px;
-            animation: blobFloat 8s ease-in-out infinite alternate;
-        }
-
-        .hero-blob-2 {
-            width: clamp(150px, 35vw, 300px);
-            height: clamp(150px, 35vw, 300px);
-            background: rgba(254, 189, 1, 0.15);
-            bottom: -60px; left: -40px;
-            animation: blobFloat 10s ease-in-out infinite alternate-reverse;
-        }
-
-        @keyframes blobFloat {
-            from { transform: translate(0, 0) scale(1); }
-            to   { transform: translate(20px, 20px) scale(1.08); }
-        }
-
-        .hero-inner {
-            position: relative;
-            z-index: 2;
-            animation: fadeSlideUp 0.8s ease both;
-        }
-
-        .about-hero-label {
-            display: inline-block;
-            background: var(--color-accent-yellow, #FEBD01);
-            color: #000;
-            font-size: 0.7rem;
-            font-weight: 900;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            padding: 0.35rem 1.2rem;
-            border-radius: 999px;
-            margin-bottom: 1.2rem;
-            animation: fadeIn 0.5s ease both;
-        }
-
-        .about-hero-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: clamp(2.8rem, 11vw, 6rem);
-            font-weight: 900;
-            text-transform: uppercase;
-            color: white;
-            line-height: 0.95;
-            margin-bottom: 1.2rem;
-            animation: fadeSlideUp 0.7s 0.15s ease both;
-        }
-
-        .about-hero-title span { color: var(--color-accent-yellow, #FEBD01); }
-
-        .about-hero-sub {
-            font-size: clamp(0.95rem, 3vw, 1.15rem);
-            color: rgba(255, 255, 255, 0.7);
-            max-width: 520px;
-            margin: 0 auto 2rem;
-            line-height: 1.65;
-            animation: fadeSlideUp 0.7s 0.3s ease both;
-        }
 
         .hero-cta {
             display: inline-block;
@@ -434,7 +358,6 @@
                             <a href="catalogo.html?categoria=camisetas" class="dropdown-link">Camisetas</a>
                             <a href="catalogo.html?categoria=conjuntos" class="dropdown-link">Conjuntos</a>
                             <a href="catalogo.html?categoria=pantalones" class="dropdown-link">Pantalones</a>
-                            <a href="catalogo.html?categoria=chaquetas" class="dropdown-link">Chaquetas</a>
                         </div>
                     </div>
                     <a href="contacto.html" class="nav-item">Contacto</a>
@@ -448,6 +371,13 @@
                         <span class="icon-svg bag-icon"></span>
                         <span class="cart-badge">0</span>
                     </button>
+                    <button class="icon-btn search-btn" aria-label="Buscar" id="header-search-btn">
+                        <span class="icon-svg search-icon"></span>
+                    </button>
+                    <!-- Auth Icons -->
+                    <button class="icon-btn login-btn" id="header-login-btn" aria-label="Iniciar Sesión">
+                        <span class="icon-svg user-icon"></span>
+                    </button>
                     <button class="icon-btn menu-btn-mobile" aria-label="Menú" id="open-menu-btn">
                         <span class="icon-svg menu-icon"></span>
                     </button>
@@ -457,21 +387,15 @@
 
         <div class="about-page">
 
-            <!-- ===== HERO ===== -->
-            <div class="about-hero">
-                <div class="hero-blob hero-blob-1"></div>
-                <div class="hero-blob hero-blob-2"></div>
-                <div class="hero-inner">
-                    <span class="about-hero-label">Nuestra Historia</span>
-                    <h1 class="about-hero-title">SOBRE <span>NOSOTROS</span></h1>
-                    <p class="about-hero-sub">Somos una tienda de ropa dedicada a ofrecer prendas modernas, cómodas y de excelente calidad para todos los estilos.</p>
-                    <a href="catalogo.html" class="hero-cta">VER COLECCIÓN →</a>
+            <!-- ===== HERO REFINADO ===== -->
+            <section class="hero-section hero-nosotros">
+                <div class="hero-blur-layer"></div>
+                <div class="hero-content">
+                    <span class="badge-yellow">Nuestra Historia</span>
+                    <h1>SOBRE <span class="text-yellow">NOSOTROS</span></h1>
+                    <p>Somos una marca apasionada por el streetwear urbano, dedicada a ofrecer prendas premium con el corte oversize perfecto para tu estilo diario.</p>
                 </div>
-                <div class="scroll-hint">
-                    <div class="scroll-dot"></div>
-                    <span>Desliza</span>
-                </div>
-            </div>
+            </section>
 
             <!-- ===== CONTENT ===== -->
             <div class="about-content">
@@ -543,7 +467,7 @@
             <!-- Minimal Footer -->
             <footer class="minimal-footer">
                 <div class="container">
-                    <p class="footer-copy">&copy; 2026 Libardino</p>
+                    <p class="footer-copy">&copy; 2026 Ellel Oversize</p>
                     <div class="footer-links">
                         <a href="privacidad.html">Términos y políticas</a>
                     </div>

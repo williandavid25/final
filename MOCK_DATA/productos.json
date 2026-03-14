@@ -4,7 +4,7 @@
         "nombre": "Buzo Oversize Premium",
         "descripcion": "Diseño exclusivo streetwear con 300GSM.",
         "precio": 35.00,
-        "imagenes": ["./public/src/assets/img/productos/482977307_635815789076836_2091117348083358970_n.jpg"],
+        "imagenes": ["./src/assets/img/productos/482977307_635815789076836_2091117348083358970_n.jpg"],
         "tallas": ["S", "M", "L", "XL"],
         "colores": ["#000000"],
         "esNuevo": true,
@@ -16,7 +16,7 @@
         "nombre": "Conjunto Urbano Black",
         "descripcion": "Estilo impecable para tu día a día.",
         "precio": 55.00,
-        "imagenes": ["./public/src/assets/img/productos/484075051_635818005743281_6798398566993434420_n.jpg"],
+        "imagenes": ["./src/assets/img/productos/484075051_635818005743281_6798398566993434420_n.jpg"],
         "tallas": ["M", "L"],
         "colores": ["#000000"],
         "esNuevo": true,
@@ -28,7 +28,7 @@
         "nombre": "Camiseta Relax Fit",
         "descripcion": "La caída ideal con el corte 3/4.",
         "precio": 25.00,
-        "imagenes": ["./public/src/assets/img/productos/484346800_635803509078064_8815217517803779657_n.jpg"],
+        "imagenes": ["./src/assets/img/productos/484346800_635803509078064_8815217517803779657_n.jpg"],
         "tallas": ["S", "M", "L"],
         "colores": ["#000000"],
         "esNuevo": true,
@@ -40,7 +40,7 @@
         "nombre": "Buzo Essential",
         "descripcion": "Lo básico nunca falla.",
         "precio": 32.00,
-        "imagenes": ["./public/src/assets/img/productos/484350914_635806539077761_961303288090069913_n.jpg"],
+        "imagenes": ["./src/assets/img/productos/484350914_635806539077761_961303288090069913_n.jpg"],
         "tallas": ["M", "L", "XL"],
         "colores": ["#000000"],
         "esNuevo": false,
@@ -52,7 +52,7 @@
         "nombre": "Pantalón Cargo Oversize",
         "descripcion": "Ligero, suelto y funcional.",
         "precio": 45.00,
-        "imagenes": ["./public/src/assets/img/productos/484808180_635820335743048_6092707380480821018_n.jpg"],
+        "imagenes": ["./src/assets/img/productos/484808180_635820335743048_6092707380480821018_n.jpg"],
         "tallas": ["S", "M", "L"],
         "colores": ["#000000"],
         "esNuevo": false,
@@ -64,10 +64,11 @@
         "nombre": "Buzo Impermeable",
         "descripcion": "Chaqueta rompevientos impermeable y extremadamente ligera.",
         "precio": 65.00,
-        "imagenes": ["./public/src/assets/img/productos/484935340_635819232409825_1032380830798064492_n.jpg"],
+        "imagenes": ["./src/assets/img/productos/484935340_635819232409825_1032380830798064492_n.jpg"],
         "tallas": ["L", "XL"],
         "colores": ["#000000"],
         "esNuevo": true,
+        "enOferta": true,
         "categoria": "buzos",
         "genero": "hombre"
     },
@@ -76,7 +77,7 @@
         "nombre": "Sudadera Classic",
         "descripcion": "Un corte vintage pero moderno.",
         "precio": 30.00,
-        "imagenes": ["./public/src/assets/img/productos/485004431_635820382409710_794882774609823966_n.jpg"],
+        "imagenes": ["./src/assets/img/productos/485004431_635820382409710_794882774609823966_n.jpg"],
         "tallas": ["M", "L"],
         "colores": ["#A9A9A9"],
         "esNuevo": false,
@@ -88,7 +89,7 @@
         "nombre": "Prenda Exclusiva Willy",
         "descripcion": "Edición especial y limitada.",
         "precio": 45.00,
-        "imagenes": ["./public/src/assets/img/productos/Willy.png"],
+        "imagenes": ["./src/assets/img/productos/Willy.png"],
         "tallas": ["S", "M", "L", "XL"],
         "colores": ["#FFFFFF"],
         "esNuevo": true,
@@ -100,7 +101,7 @@
         "nombre": "Buzo Minimal Relax",
         "descripcion": "Detalles muy sutiles.",
         "precio": 38.00,
-        "imagenes": ["./public/src/assets/img/productos/d9f3ad83-8f9a-40f7-94be-701ef707daf5.jpeg"],
+        "imagenes": ["./src/assets/img/productos/d9f3ad83-8f9a-40f7-94be-701ef707daf5.jpeg"],
         "tallas": ["M", "L", "XL"],
         "colores": ["#000000"],
         "esNuevo": true,
@@ -113,8 +114,8 @@
         "descripcion": "Corte moderno y minimalista, ideal para el día a día.",
         "precio": 40.00,
         "imagenes": [
-            "./public/src/assets/img/productos/buzos/blanco-chico-1.jpeg",
-            "./public/src/assets/img/productos/buzos/blanco-chico-2.jpeg"
+            "./src/assets/img/productos/buzos/blanco-chico-1.jpeg",
+            "./src/assets/img/productos/buzos/blanco-chico-2.jpeg"
         ],
         "tallas": ["S", "M", "L", "XL"],
         "colores": ["#FFFFFF"],
@@ -128,8 +129,8 @@
         "descripcion": "La textura más suave en un diseño clásico.",
         "precio": 38.00,
         "imagenes": [
-            "./public/src/assets/img/productos/buzos/buzo-blanco-1.jpeg",
-            "./public/src/assets/img/productos/buzos/buzo-blanco-2.jpeg"
+            "./src/assets/img/productos/buzos/buzo-blanco-1.jpeg",
+            "./src/assets/img/productos/buzos/buzo-blanco-2.jpeg"
         ],
         "tallas": ["S", "M", "L", "XL"],
         "colores": ["#FFFFFF"],
@@ -143,12 +144,13 @@
         "descripcion": "Tono militar con caída estructurada y cómoda.",
         "precio": 42.00,
         "imagenes": [
-            "./public/src/assets/img/productos/buzos/verde-1.jpeg",
-            "./public/src/assets/img/productos/buzos/verde-2.jpeg"
+            "./src/assets/img/productos/buzos/verde-1.jpeg",
+            "./src/assets/img/productos/buzos/verde-2.jpeg"
         ],
         "tallas": ["S", "M", "L"],
         "colores": ["#556B2F"],
         "esNuevo": true,
+        "enOferta": true,
         "categoria": "buzos",
         "genero": "hombre"
     },
@@ -158,8 +160,8 @@
         "descripcion": "Diseño inspirado en la naturaleza con colores vibrantes.",
         "precio": 45.00,
         "imagenes": [
-            "./public/src/assets/img/productos/buzos/verde-bosque-1.jpeg",
-            "./public/src/assets/img/productos/buzos/verde-bosque-2.jpeg"
+            "./src/assets/img/productos/buzos/verde-bosque-1.jpeg",
+            "./src/assets/img/productos/buzos/verde-bosque-2.jpeg"
         ],
         "tallas": ["M", "L", "XL"],
         "colores": ["#228B22"],
@@ -172,7 +174,7 @@
         "nombre": "Buzo Classic Mint",
         "descripcion": "Frescura y estilo en cada detalle.",
         "precio": 35.00,
-        "imagenes": ["./public/src/assets/img/productos/buzos/verde-chico-1.jpeg"],
+        "imagenes": ["./src/assets/img/productos/buzos/verde-chico-1.jpeg"],
         "tallas": ["S", "M", "L"],
         "colores": ["#98FF98"],
         "esNuevo": true,
@@ -185,13 +187,14 @@
         "descripcion": "Color vibrante para destacar en el asfalto.",
         "precio": 28.00,
         "imagenes": [
-            "./public/src/assets/img/productos/camisetas/naranja-1.jpeg",
-            "./public/src/assets/img/productos/camisetas/naranja-2.jpeg",
-            "./public/src/assets/img/productos/camisetas/naranja-13.jpeg"
+            "./src/assets/img/productos/camisetas/naranja-1.jpeg",
+            "./src/assets/img/productos/camisetas/naranja-2.jpeg",
+            "./src/assets/img/productos/camisetas/naranja-13.jpeg"
         ],
         "tallas": ["S", "M", "L"],
         "colores": ["#FF8C00"],
         "esNuevo": true,
+        "enOferta": true,
         "categoria": "camisetas",
         "genero": "hombre"
     },
@@ -201,9 +204,9 @@
         "descripcion": "Estilo relajado con un toque de color.",
         "precio": 26.00,
         "imagenes": [
-            "./public/src/assets/img/productos/camisetas/naranja-chica-1.jpeg",
-            "./public/src/assets/img/productos/camisetas/naranja-chica-2.jpeg",
-            "./public/src/assets/img/productos/camisetas/naranja-chica-12.jpeg"
+            "./src/assets/img/productos/camisetas/naranja-chica-1.jpeg",
+            "./src/assets/img/productos/camisetas/naranja-chica-2.jpeg",
+            "./src/assets/img/productos/camisetas/naranja-chica-12.jpeg"
         ],
         "tallas": ["S", "M", "L"],
         "colores": ["#FF4500"],
@@ -216,7 +219,7 @@
         "nombre": "Camiseta Night Black",
         "descripcion": "El básico oscuro que combina con todo.",
         "precio": 24.00,
-        "imagenes": ["./public/src/assets/img/productos/camisetas/negro-1.jpeg"],
+        "imagenes": ["./src/assets/img/productos/camisetas/negro-1.jpeg"],
         "tallas": ["S", "M", "L", "XL"],
         "colores": ["#000000"],
         "esNuevo": true,
@@ -228,7 +231,7 @@
         "nombre": "Camiseta Stealth Black",
         "descripcion": "Corte premium con acabados de alta calidad.",
         "precio": 26.00,
-        "imagenes": ["./public/src/assets/img/productos/camisetas/negro-chica1.jpeg"],
+        "imagenes": ["./src/assets/img/productos/camisetas/negro-chica1.jpeg"],
         "tallas": ["S", "M", "L"],
         "colores": ["#000000"],
         "esNuevo": true,
@@ -241,8 +244,8 @@
         "descripcion": "Combinación perfecta de tonos tierra y confort.",
         "precio": 65.00,
         "imagenes": [
-            "./public/src/assets/img/productos/conjuntos/cafe-1.jpeg",
-            "./public/src/assets/img/productos/conjuntos/cafe-2.jpeg"
+            "./src/assets/img/productos/conjuntos/cafe-1.jpeg",
+            "./src/assets/img/productos/buzos/cafe-2.jpeg"
         ],
         "tallas": ["M", "L", "XL"],
         "colores": ["#4B3621"],
@@ -256,13 +259,14 @@
         "descripcion": "Estilo atrevido y sofisticado.",
         "precio": 70.00,
         "imagenes": [
-            "./public/src/assets/img/productos/conjuntos/morado-1.jpeg",
-            "./public/src/assets/img/productos/conjuntos/morado-2.jpeg",
-            "./public/src/assets/img/productos/conjuntos/morado-3.jpeg"
+            "./src/assets/img/productos/conjuntos/morado-1.jpeg",
+            "./src/assets/img/productos/conjuntos/morado-2.jpeg",
+            "./src/assets/img/productos/buzos/morado-3.jpeg"
         ],
         "tallas": ["S", "M", "L"],
         "colores": ["#800080"],
         "esNuevo": true,
+        "enOferta": true,
         "categoria": "conjuntos",
         "genero": "mujer"
     },
@@ -271,10 +275,11 @@
         "nombre": "Pantalón Forest Green",
         "descripcion": "Resistente, cómodo y con gran estilo.",
         "precio": 48.00,
-        "imagenes": ["./public/src/assets/img/productos/pantalones/verde-1.jpeg"],
+        "imagenes": ["./src/assets/img/productos/pantalones/verde-1.jpeg"],
         "tallas": ["S", "M", "L", "XL"],
         "colores": ["#228B22"],
         "esNuevo": true,
+        "enOferta": true,
         "categoria": "pantalones",
         "genero": "hombre"
     },
@@ -283,7 +288,7 @@
         "nombre": "Conjunto Sky Blue",
         "descripcion": "Ligereza y color en un solo conjunto.",
         "precio": 58.00,
-        "imagenes": ["./public/src/assets/img/productos/conjuntos/azul-1.jpeg"],
+        "imagenes": ["./src/assets/img/productos/camisetas/blanco-1.jpeg"],
         "tallas": ["S", "M", "L"],
         "colores": ["#87CEEB"],
         "esNuevo": true,
@@ -295,7 +300,7 @@
         "nombre": "Conjunto Sand Beige",
         "descripcion": "Elegancia minimalista para cualquier ocasión.",
         "precio": 62.00,
-        "imagenes": ["./public/src/assets/img/productos/conjuntos/beige-1.jpeg"],
+        "imagenes": ["./src/assets/img/productos/camisetas/beige-1.jpeg"],
         "tallas": ["M", "L"],
         "colores": ["#F5F5DC"],
         "esNuevo": true,
@@ -307,7 +312,7 @@
         "nombre": "Pantalón Cargo Stealth",
         "descripcion": "Múltiples bolsillos y máxima durabilidad.",
         "precio": 52.00,
-        "imagenes": ["./public/src/assets/img/productos/pantalones/04b8930b0766da6a01bc6f5018f442a3.jpg.jpeg"],
+        "imagenes": ["./src/assets/img/productos/pantalones/482977307_635815789076836_2091117348083358970_n.jpg"],
         "tallas": ["S", "M", "L", "XL"],
         "colores": ["#2F4F4F"],
         "esNuevo": false,
@@ -319,7 +324,7 @@
         "nombre": "Pantalón Urban Fit",
         "descripcion": "El corte perfecto para un look urbano.",
         "precio": 45.00,
-        "imagenes": ["./public/src/assets/img/productos/pantalones/27b237d692250cb5840aa06c30b3d5fe.jpg.jpeg"],
+        "imagenes": ["./src/assets/img/productos/pantalones/484346800_635803509078064_8815217517803779657_n.jpg"],
         "tallas": ["M", "L", "XL"],
         "colores": ["#1C1C1C"],
         "esNuevo": true,

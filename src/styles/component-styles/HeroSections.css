@@ -1,0 +1,132 @@
+/* src/styles/component-styles/HeroSections.css - Updated with Blur Effects and Privacy Class */
+
+.hero-section {
+    height: 500px;
+    display: flex;
+    align-items: flex-end; 
+    justify-content: center;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    padding-bottom: 60px; 
+    overflow: hidden;
+    transition: background-image 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Base overlay for all heros */
+.hero-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3); /* Subtle dark overlay */
+    z-index: 1;
+}
+
+/* Dynamic Gradient Overlay (Higher precision) */
+.hero-section::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60%; 
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.4) 40%, transparent 100%);
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Glassmorphism/Blur Overlay for special sections */
+.hero-blur-layer {
+    position: absolute;
+    inset: 0;
+    backdrop-filter: blur(6px); /* Professional blur effect */
+    -webkit-backdrop-filter: blur(6px);
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    color: #ffffff;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 40px;
+}
+
+/* Category Backgrounds */
+.hero-buzos          { background-image: url('../../assets/img/sections/buzos.png'); }
+.hero-camisetas      { background-image: url('../../assets/img/sections/camisetas.png'); }
+.hero-categoria-todo { background-image: url('../../assets/img/sections/categoria-todo.png'); }
+.hero-conjuntos      { background-image: url('../../assets/img/sections/conjuntos.png'); }
+.hero-hombre         { background-image: url('../../assets/img/sections/hombre.png'); }
+.hero-mujer          { background-image: url('../../assets/img/sections/mujer.png'); }
+.hero-pantalones     { background-image: url('../../assets/img/sections/pantalones.png'); }
+.hero-nosotros       { background-image: url('../../assets/img/sections/nosotros-hero.jpg'); }
+.hero-privacidad     { background-image: url('../../assets/img/sections/privacidad-hero.jpg'); }
+
+/* Typography */
+.hero-content h1 {
+    font-size: clamp(3rem, 8vw, 5rem);
+    font-weight: 900;
+    letter-spacing: -2px;
+    margin-bottom: 0.8rem;
+    text-transform: uppercase;
+    line-height: 0.9;
+    color: #ffffff;
+}
+
+.hero-content h1 span,
+.hero-content h1 .text-yellow {
+    color: #ffcc00;
+    display: inline-block;
+}
+
+.hero-content p {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    opacity: 0.9;
+    max-width: 700px;
+    margin: 0 auto;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
+
+.badge-yellow {
+    display: inline-block;
+    background: #ffcc00;
+    color: #000;
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 15px rgba(255, 204, 0, 0.3);
+}
+
+/* MOBILE REFINEMENTS */
+@media (max-width: 768px) {
+    .hero-section {
+        height: 420px;
+        padding-bottom: 40px;
+    }
+
+    .hero-section::after {
+        height: 70%;
+    }
+
+    .hero-content {
+        padding: 0 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+}

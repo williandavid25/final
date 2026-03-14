@@ -10,20 +10,21 @@ import { initCart, addToCart, openCart, procesarCompraWhatsApp } from './cartSta
 import { WishlistDrawer } from '../components/wishlist/WishlistDrawer.js';
 import { initWishlist, toggleWishlist, openWishlist } from './wishlistState.js';
 import { initProductClickAnimations } from './animations.js';
+import { initSearch } from './search.js';
 
 // -------------------------------
 // Config maps for display labels
 // -------------------------------
 const CATEGORIA_META = {
-    buzos:      { label: 'Buzos & Sudaderas', heroTitle: 'BUZOS &<br><span>SUDADERAS</span>', sub: 'Oversize con 300GSM · La comodidad que defines.', banner: './public/src/assets/img/banners/banner-hoodie-negro.jpg' },
-    camisetas:  { label: 'Camisetas', heroTitle: 'CAMI<span>SETAS</span>', sub: 'Corte relajado · Tejidos premium.', banner: './public/src/assets/img/banners/banner-hoodie-marfil.jpg' },
-    conjuntos:  { label: 'Conjuntos', heroTitle: 'CON<span>JUNTOS</span>', sub: 'El look completo en un solo movimiento.', banner: './public/src/assets/img/banners/banner-hoodie-azulelectrico.jpg' },
-    pantalones: { label: 'Pantalones', heroTitle: 'PANTA<span>LONES</span>', sub: 'Cargo, wide-leg y relaxed fit.', banner: './public/src/assets/img/banners/1773289479333.png' },
+    buzos:      { label: 'Buzos & Sudaderas', heroTitle: 'BUZOS &<br><span class="text-yellow">SUDADERAS</span>', sub: 'Oversize con 300GSM · La comodidad que defines.', banner: './public/src/assets/img/banners/banner-hoodie-negro.jpg' },
+    camisetas:  { label: 'Camisetas', heroTitle: 'CAMI<span class="text-yellow">SETAS</span>', sub: 'Corte relajado · Tejidos premium.', banner: './public/src/assets/img/banners/banner-hoodie-marfil.jpg' },
+    conjuntos:  { label: 'Conjuntos', heroTitle: 'CON<span class="text-yellow">JUNTOS</span>', sub: 'El look completo en un solo movimiento.', banner: './public/src/assets/img/banners/banner-hoodie-azulelectrico.jpg' },
+    pantalones: { label: 'Pantalones', heroTitle: 'PANTA<span class="text-yellow">LONES</span>', sub: 'Cargo, wide-leg y relaxed fit.', banner: './public/src/assets/img/banners/1773289479333.png' },
 };
 
 const GENERO_META = {
-    hombre: { label: 'Hombre', heroTitle: 'COLECCIÓN<br><span>HOMBRE</span>', sub: 'Streetwear urban para él.', banner: './public/src/assets/img/banners/1773289601640.png' },
-    mujer:  { label: 'Mujer',  heroTitle: 'COLECCIÓN<br><span>MUJER</span>',  sub: 'Estilo oversize para ella.', banner: './public/src/assets/img/banners/1773290080697.png' },
+    hombre: { label: 'Hombre', heroTitle: 'COLECCIÓN<br><span class="text-yellow">HOMBRE</span>', sub: 'Streetwear urban para él.', banner: './public/src/assets/img/banners/1773289601640.png' },
+    mujer:  { label: 'Mujer',  heroTitle: 'COLECCIÓN<br><span class="text-yellow">MUJER</span>',  sub: 'Estilo oversize para ella.', banner: './public/src/assets/img/banners/1773290080697.png' },
 };
 
 const ALL_CATEGORIAS = Object.keys(CATEGORIA_META);
@@ -44,12 +45,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     initCart();
     initWishlist();
     initProductClickAnimations();
+    initSearch();
     setupMenuInteractions();
 
     // Parse URL params
     const params = new URLSearchParams(window.location.search);
     const categoriaParam = params.get('categoria')?.toLowerCase() || null;
     const generoParam    = params.get('genero')?.toLowerCase()    || null;
+    const ofertaParam    = params.get('oferta') === 'true';
 
     // Fetch all products
     let allProducts = [];
@@ -67,7 +70,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Apply initial filter based on URL param
     updateHero(categoriaParam, generoParam);
     buildFilterChips(allProducts, categoriaParam, generoParam);
-    renderProducts(applyFilters(allProducts, categoriaParam, generoParam));
+    renderProducts(applyFilters(allProducts, categoriaParam, generoParam, 'default', ofertaParam));
 
     // Sort handler
     document.getElementById('sort-select').addEventListener('change', (e) => {
@@ -90,44 +93,55 @@ document.addEventListener('DOMContentLoaded', async () => {
 // Hero Banner
 // -------------------------------
 function updateHero(categoria, genero) {
-    const heroEl    = document.getElementById('catalog-hero');
-    const labelEl   = document.getElementById('hero-label');
-    const titleEl   = document.getElementById('hero-title');
-    const subEl     = document.getElementById('hero-sub');
+    const heroEl  = document.getElementById('dynamic-hero');
+    const labelEl = document.getElementById('hero-label');
+    const titleEl = document.getElementById('hero-title');
+    const subEl   = document.getElementById('hero-sub');
 
+    if (!heroEl) return;
+
+    // 1. Matriz de todas las clases posibles
+    const clasesPortadas = [
+        'hero-buzos', 'hero-camisetas', 'hero-categoria-todo', 
+        'hero-conjuntos', 'hero-hombre', 'hero-mujer', 'hero-pantalones'
+    ];
+
+    // 2. Limpieza del estado anterior
+    heroEl.classList.remove(...clasesPortadas);
+
+    // 3. Obtener meta y asignar nueva clase
     let meta = null;
+    let nuevaClase = 'hero-categoria-todo';
+
     if (categoria && CATEGORIA_META[categoria]) {
         meta = CATEGORIA_META[categoria];
+        nuevaClase = `hero-${categoria}`;
     } else if (genero && GENERO_META[genero]) {
         meta = GENERO_META[genero];
+        nuevaClase = `hero-${genero}`;
     }
 
+    heroEl.classList.add(nuevaClase);
+
+    // 4. Actualizar textos
     if (meta) {
-        if (labelEl) labelEl.textContent = meta.label;
+        if (labelEl) labelEl.textContent = meta.label.toUpperCase();
         if (titleEl) titleEl.innerHTML   = meta.heroTitle;
         if (subEl) subEl.textContent     = meta.sub;
         document.title = `${meta.label} | Ellel Oversize`;
-        
-        // Restore Banner Image
-        if (heroEl && meta.banner) {
-            heroEl.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('${meta.banner}')`;
-            heroEl.style.backgroundSize = 'cover';
-            heroEl.style.backgroundPosition = 'center';
-            heroEl.style.backgroundAttachment = 'fixed';
-            
-            // GSAP Entrance for background
-            if (window.gsap) {
-                gsap.fromTo(heroEl, { backgroundPosition: "center 40%" }, { backgroundPosition: "center 50%", duration: 1.5, ease: "power2.out" });
-            }
-        }
     } else {
-        if (labelEl) labelEl.textContent = 'Colección Completa';
-        if (titleEl) titleEl.innerHTML   = 'TODOS LOS <span>MODELOS</span>';
+        if (labelEl) labelEl.textContent = 'COLECCIÓN COMPLETA';
+        if (titleEl) titleEl.innerHTML   = 'TODOS LOS <span class="text-yellow">MODELOS</span>';
         if (subEl) subEl.textContent     = 'Streetwear oversize de calidad premium';
         document.title = 'Catálogo | Ellel Oversize';
-        if (heroEl) {
-            heroEl.style.backgroundImage = 'linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%)';
-        }
+    }
+
+    // GSAP Entrance
+    if (window.gsap) {
+        gsap.fromTo(heroEl.querySelector('.hero-content'), 
+            { y: 30, opacity: 0 }, 
+            { y: 0, opacity: 1, duration: 1, ease: "power3.out" }
+        );
     }
 }
 
@@ -150,7 +164,15 @@ function buildFilterChips(products, activeCat, activeGen) {
 
     container.innerHTML = chipsConfig.map(chip => {
         const isActive = (chip.cat === activeCat && chip.gen === activeGen) ? 'active' : '';
-        return `<button class="filter-chip ${isActive}" data-cat="${chip.cat || ''}" data-gen="${chip.gen || ''}">${chip.label}</button>`;
+        return `
+            <button class="btn-gpw filter-chip ${isActive}" data-cat="${chip.cat || ''}" data-gen="${chip.gen || ''}">
+                <div class="gpw-wave gpw-wave-1"></div>
+                <div class="gpw-wave gpw-wave-2"></div>
+                <div class="gpw-wave gpw-wave-3"></div>
+                <div class="gpw-wave gpw-wave-4"></div>
+                <div class="gpw-flare"></div> 
+                <span class="btn-gpw_text">${chip.label}</span>
+            </button>`;
     }).join('');
 
     // Cinematic Entrance Stagger
@@ -204,10 +226,11 @@ function buildFilterChips(products, activeCat, activeGen) {
 // -------------------------------
 // Filter + Sort
 // -------------------------------
-function applyFilters(products, cat, gen, sort = 'default') {
+function applyFilters(products, cat, gen, sort = 'default', offer = false) {
     let filtered = [...products];
     if (cat) filtered = filtered.filter(p => p.categoria === cat);
     if (gen) filtered = filtered.filter(p => p.genero === gen);
+    if (offer) filtered = filtered.filter(p => p.enOferta === true);
 
     switch (sort) {
         case 'precio-asc':  filtered.sort((a, b) => a.precio - b.precio); break;
