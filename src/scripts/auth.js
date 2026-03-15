@@ -1,15 +1,11 @@
 /**
  * auth.js — Google Sign-In using Google Identity Services (GIS)
  * ---------------------------------------------------------------
- * Uses the official Google Identity Services library.
- * Requires a Google Cloud Console Client ID (see comment below).
+ * Dominio autorizado: https://elletshop.dev y https://www.elletshop.dev
+ * Añadir en Google Cloud Console → OAuth Client → Authorized JS Origins.
  *
- * HOW TO ACTIVATE REAL GOOGLE LOGIN:
- * 1. Go to https://console.cloud.google.com/
- * 2. Create a project → APIs & Services → Credentials
- * 3. Create an "OAuth 2.0 Client ID" for "Web application"
- * 4. Add your domain to "Authorized JavaScript origins"
- * 5. Replace GOOGLE_CLIENT_ID below with your real client ID
+ * FIX RACE CONDITION: renderButton ahora se llama con setTimeout(320ms)
+ * después de abrir el modal, garantizando offsetWidth > 0.
  */
 
 export const GOOGLE_CLIENT_ID = '440096429908-li0naluh0idbvqo3rn8hhbma55nm0i75.apps.googleusercontent.com';
@@ -33,7 +29,6 @@ export function getUser() { return currentUser; }
 /** Sign in with Google credential JWT payload */
 export function signInWithGoogle(credentialResponse) {
     try {
-        // Decode the JWT from Google (no library needed — payload is base64)
         const payload = JSON.parse(atob(credentialResponse.credential.split('.')[1]));
         currentUser = {
             name:    payload.name,
@@ -80,23 +75,17 @@ export function simulateEmailAuth(email, password, isRegister = false, customNam
 
 // ── UI Update Callback ───────────────────────────────────────────
 function onAuthChange(user) {
-    // Update cart auth state
     updateCartAuthUI(user);
-    // Update header user icon
     updateHeaderAuthUI(user);
-    // Close auth modal if open
     const modal = document.getElementById('auth-modal-overlay');
     if (modal && user) modal.classList.remove('active');
-    // Dispatch custom event for any listeners
     window.dispatchEvent(new CustomEvent('authChange', { detail: user }));
 }
 
 // ── Cart Auth Section ────────────────────────────────────────────
 export function updateCartAuthUI(user) {
-    // ── Empty state banners
     const loginBanner = document.getElementById('cart-login-banner');
     const userBanner  = document.getElementById('cart-user-banner');
-    // ── Filled state banners
     const loginBannerFilled = document.getElementById('cart-login-banner-filled');
     const userBannerFilled  = document.getElementById('cart-user-banner-filled');
 
@@ -109,7 +98,6 @@ export function updateCartAuthUI(user) {
         <button id="cart-signout-btn" style="flex-shrink: 0; background: #f0f0f0; border: none; padding: 5px 10px; border-radius: 8px; font-weight: 700; font-size: 0.68rem; cursor: pointer; color: #444; text-transform: uppercase;">Salir</button>
     ` : '';
 
-    // Update empty-state banners
     if (loginBanner) loginBanner.style.display = user ? 'none' : '';
     if (userBanner) {
         userBanner.style.display = user ? 'flex' : 'none';
@@ -119,7 +107,6 @@ export function updateCartAuthUI(user) {
         }
     }
 
-    // Update filled-state banners (may not exist yet)
     if (loginBannerFilled) loginBannerFilled.style.display = user ? 'none' : 'flex';
     if (userBannerFilled) {
         userBannerFilled.style.display = user ? 'flex' : 'none';
@@ -137,15 +124,43 @@ export function updateHeaderAuthUI(user) {
 
     if (user) {
         if (headerAvatar) {
-            headerAvatar.style.display     = 'flex';
+            headerAvatar.style.display = 'flex';
             const img = headerAvatar.querySelector('img');
             if (img) img.src = user.picture || '';
         }
         if (loginIconBtn) loginIconBtn.style.display = 'none';
     } else {
-        if (headerAvatar)  headerAvatar.style.display  = 'none';
-        if (loginIconBtn) loginIconBtn.style.display  = '';
+        if (headerAvatar) headerAvatar.style.display = 'none';
+        if (loginIconBtn) loginIconBtn.style.display = '';
     }
+}
+
+// ── Render Google Button (corregido: espera a que el contenedor tenga ancho real) ──
+function renderGoogleButton() {
+    if (!window.google?.accounts?.id || currentUser) return;
+    const container = document.getElementById('google-signin-btn');
+    if (!container) return;
+
+    // requestAnimationFrame garantiza que el modal ya está visible en pantalla
+    // y el contenedor tiene offsetWidth > 0 antes de que Google renderice su iframe.
+    requestAnimationFrame(() => {
+        const width = container.offsetWidth || 340;
+        // Si hay un iframe ya renderizado con ancho 0 (fallo anterior), limpiarlo
+        const existingIframe = container.querySelector('iframe');
+        if (existingIframe && existingIframe.offsetWidth < 10) {
+            container.innerHTML = '';
+        }
+        if (container.children.length === 0) {
+            google.accounts.id.renderButton(container, {
+                theme:          'filled_black',
+                size:           'large',
+                width:          width,
+                text:           'continue_with',
+                logo_alignment: 'left',
+                ux_mode:        'popup', // popup es más compatible con Pages/subdomains
+            });
+        }
+    });
 }
 
 // ── Initialize Google Identity Services ─────────────────────────
@@ -153,8 +168,7 @@ export function initGoogleAuth() {
     loadUser();
 
     if (!window.google?.accounts?.id) {
-        console.warn('Google Identity Services not loaded. Showing fallback button.');
-        // Show fallback Google button
+        console.warn('Google Identity Services not loaded yet.');
         const fallback = document.getElementById('auth-google-fallback');
         if (fallback) fallback.style.display = 'flex';
         onAuthChange(currentUser);
@@ -162,26 +176,15 @@ export function initGoogleAuth() {
     }
 
     google.accounts.id.initialize({
-        client_id: GOOGLE_CLIENT_ID,
-        callback:  signInWithGoogle,
-        auto_select: false,
+        client_id:             GOOGLE_CLIENT_ID,
+        callback:              signInWithGoogle,
+        auto_select:           false,
         cancel_on_tap_outside: true,
+        ux_mode:               'popup',
     });
 
-    // Update UI
     onAuthChange(currentUser);
-
-    // Render Google button inside the modal
-    const googleBtnContainer = document.getElementById('google-signin-btn');
-    if (googleBtnContainer && !currentUser) {
-        google.accounts.id.renderButton(googleBtnContainer, {
-            theme: 'filled_black',
-            size:  'large',
-            width: googleBtnContainer.offsetWidth || 340,
-            text:  'continue_with',
-            logo_alignment: 'left',
-        });
-    }
+    renderGoogleButton();
 }
 
 // ── Open / Close Auth Modal ──────────────────────────────────────
@@ -190,26 +193,26 @@ export function openAuthModal() {
     if (!modal) return;
     modal.classList.add('active');
 
-    // Try to render Google button (may not have been available on page load)
-    if (window.google?.accounts?.id && !currentUser) {
-        const googleBtnContainer = document.getElementById('google-signin-btn');
-        if (googleBtnContainer && !googleBtnContainer.children.length) {
-            google.accounts.id.renderButton(googleBtnContainer, {
-                theme: 'filled_black',
-                size:  'large',
-                width: googleBtnContainer.offsetWidth || 340,
-                text:  'continue_with',
-                logo_alignment: 'left',
-            });
+    // Esperar que la transición CSS del modal termine (~300ms)
+    // para que el contenedor google-signin-btn tenga offsetWidth > 0.
+    setTimeout(() => {
+        if (window.google?.accounts?.id) {
+            renderGoogleButton();
+        } else {
+            const fallback = document.getElementById('auth-google-fallback');
+            if (fallback) fallback.style.display = 'flex';
         }
-    } else if (!window.google?.accounts?.id) {
-        // Show fallback if GIS never loaded
-        const fallback = document.getElementById('auth-google-fallback');
-        if (fallback) fallback.style.display = 'flex';
-    }
+    }, 320);
 }
 
 export function closeAuthModal() {
     const modal = document.getElementById('auth-modal-overlay');
     if (modal) modal.classList.remove('active');
 }
+
+// ── Callback global para el script GIS ──────────────────────────
+// accounts.google.com/gsi/client llama automáticamente a window.onGoogleLibraryLoad
+// cuando la librería está lista. Más confiable que el evento 'load'.
+window.onGoogleLibraryLoad = () => {
+    if (typeof initGoogleAuth === 'function') initGoogleAuth();
+};

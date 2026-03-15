@@ -32,8 +32,11 @@
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
-    <!-- Preload critical video -->
+    <!-- Preload solo el video hero (crítico para LCP) -->
     <link rel="preload" href="./src/assets/videos/hero-bg.mp4" as="video" type="video/mp4">
+    <!-- DNS prefetch para CDNs externos -->
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
 </head>
 <body class="home-page">
     <canvas id="particle-canvas"></canvas>
@@ -150,7 +153,7 @@
                         <div class="swiper-slide">
                             <div class="card-media">
                                 <span class="vertical-text">HOODIE</span>
-                                <img src="./src/assets/img/banners/banner-hoodie-azulelectrico.jpg" alt="Azul Eléctrico">
+                                <img src="./src/assets/img/banners/banner-hoodie-azulelectrico.jpg" alt="Azul Eléctrico" loading="lazy">
                             </div>
                             <div class="card-info">
                                 <h3>Blue Electric Edition</h3>
@@ -160,7 +163,7 @@
                         <div class="swiper-slide">
                             <div class="card-media">
                                 <span class="vertical-text">HOODIE</span>
-                                <img src="./src/assets/img/banners/banner-hoodie-marfil.jpg" alt="Marfil">
+                                <img src="./src/assets/img/banners/banner-hoodie-marfil.jpg" alt="Marfil" loading="lazy">
                             </div>
                             <div class="card-info">
                                 <h3>Essential Ivory</h3>
@@ -170,7 +173,7 @@
                         <div class="swiper-slide">
                             <div class="card-media">
                                 <span class="vertical-text">HOODIE</span>
-                                <img src="./src/assets/img/banners/banner-hoodie-negro.jpg" alt="Negro">
+                                <img src="./src/assets/img/banners/banner-hoodie-negro.jpg" alt="Negro" loading="lazy">
                             </div>
                             <div class="card-info">
                                 <h3>Onyx Black Drop</h3>
@@ -180,7 +183,7 @@
                         <div class="swiper-slide">
                             <div class="card-media">
                                 <span class="vertical-text">HOODIE</span>
-                                <img src="./src/assets/img/banners/1773289479333.png" alt="Colección 1">
+                                <img src="./src/assets/img/banners/1773289479333.png" alt="Colección 1" loading="lazy">
                             </div>
                             <div class="card-info">
                                 <h3>Urban Techwear</h3>
@@ -190,7 +193,7 @@
                         <div class="swiper-slide">
                             <div class="card-media">
                                 <span class="vertical-text">HOODIE</span>
-                                <img src="./src/assets/img/banners/1773289601640.png" alt="Colección 2">
+                                <img src="./src/assets/img/banners/1773289601640.png" alt="Colección 2" loading="lazy">
                             </div>
                             <div class="card-info">
                                 <h3>Neutral Balance</h3>
@@ -200,7 +203,7 @@
                         <div class="swiper-slide">
                             <div class="card-media">
                                 <span class="vertical-text">HOODIE</span>
-                                <img src="./src/assets/img/banners/1773290080697.png" alt="Colección 3">
+                                <img src="./src/assets/img/banners/1773290080697.png" alt="Colección 3" loading="lazy">
                             </div>
                             <div class="card-info">
                                 <h3>Modern Graphite</h3>
@@ -210,7 +213,7 @@
                         <div class="swiper-slide">
                             <div class="card-media">
                                 <span class="vertical-text">HOODIE</span>
-                                <img src="./src/assets/img/banners/1773290529084.png" alt="Colección 4">
+                                <img src="./src/assets/img/banners/1773290529084.png" alt="Colección 4" loading="lazy">
                             </div>
                             <div class="card-info">
                                 <h3>Pure Slate</h3>
@@ -230,7 +233,8 @@
             <div class="video-presentation-wrapper mt-xxl mb-xl">
                 <div class="video-container container"
                     style="position: relative; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); max-width: 1000px; margin: 0 auto;">
-                    <video id="brand-video" width="100%" height="auto" autoplay loop muted playsinline preload="auto"
+                    <!-- preload=none: solo carga el video de presentación cuando el usuario llega a esta sección -->
+                    <video id="brand-video" width="100%" height="auto" loop muted playsinline preload="none"
                         poster="./src/assets/img/banners/1773290529084.png">
                         <source src="./src/assets/videos/Ellel_Video_Generado.mp4" type="video/mp4">
                         Tu navegador no soporta reproducción de video
@@ -247,7 +251,7 @@
                     <a href="catalogo.html?genero=hombre"
                         style="display: block; text-decoration: none; position: relative; border-radius: 20px; overflow: hidden; aspect-ratio: 3/4; background: linear-gradient(135deg, #1a1a1a 0%, #333 100%); cursor: pointer;">
                         <img src="./src/assets/img/productos/484350914_635806539077761_961303288090069913_n.jpg"
-                            alt="Colección Hombre"
+                            alt="Colección Hombre" loading="lazy"
                             style="width:100%; height:100%; object-fit:cover; opacity:0.55; transition: transform 0.5s ease;">
                         <div
                             style="position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 2rem; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);">
@@ -265,7 +269,7 @@
                     <a href="catalogo.html?genero=mujer"
                         style="display: block; text-decoration: none; position: relative; border-radius: 20px; overflow: hidden; aspect-ratio: 3/4; background: linear-gradient(135deg, #4a206e 0%, #6F3ECD 100%); cursor: pointer;">
                         <img src="./src/assets/img/productos/484346800_635803509078064_8815217517803779657_n.jpg"
-                            alt="Colección Mujer"
+                            alt="Colección Mujer" loading="lazy"
                             style="width:100%; height:100%; object-fit:cover; opacity:0.55; transition: transform 0.5s ease;">
                         <div
                             style="position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 2rem; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);">
@@ -320,7 +324,6 @@
     <div id="checkout-container"></div>
     <div id="auth-container"></div>
     <div id="wishlist-container"></div>
-    <div id="wishlist-container"></div>
 
     <!-- Mobile Menu Slide-out (Same structure, enhanced CSS later) -->
     <div class="mobile-menu-overlay" id="mobile-menu">
@@ -359,13 +362,27 @@
         </svg>
     </a>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
-    <script src="./src/scripts/antigravity-engine.js"></script>
+    <!-- Scripts: defer libera el Critical Rendering Path -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js" defer></script>
+    <script src="./src/scripts/antigravity-engine.js" defer></script>
     <script type="module" src="./src/scripts/index.js"></script>
+    <!-- IntersectionObserver para autoplay del video de presentación -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const brandVideo = document.getElementById('brand-video');
+            if (!brandVideo) return;
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) { brandVideo.load(); brandVideo.play().catch(() => {}); }
+                    else { brandVideo.pause(); }
+                });
+            }, { threshold: 0.3 });
+            io.observe(brandVideo);
+        });
+    </script>
 
     <!-- Typewriter Styles + Engine -->
     <style>

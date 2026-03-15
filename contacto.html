@@ -23,6 +23,9 @@
     <link rel="stylesheet" href="./src/styles/mobile.css">
     <link rel="stylesheet" href="./src/styles/component-styles/Wishlist.css">
     <link rel="stylesheet" href="./src/styles/component-styles/Buttons.css">
+    <!-- Google Identity Services -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
 </head>
 <body class="bg-light-gray">
     <canvas id="particle-canvas"></canvas>
@@ -136,6 +139,7 @@
     <!-- Modals & Overlays -->
     <div id="cart-container"></div>
     <div id="checkout-container"></div>
+    <div id="auth-container"></div>
     <div id="wishlist-container"></div>
 
     <!-- Mobile Menu Slide-out (Reusing existing logic) -->
@@ -160,11 +164,11 @@
         </nav>
     </div>
 
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="./src/scripts/antigravity-engine.js"></script>
+    <!-- Scripts: defer libera el Critical Rendering Path -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+    <script src="./src/scripts/antigravity-engine.js" defer></script>
     <script type="module" src="./src/scripts/index.js"></script>
     
     <!-- Contact Form Logic -->
