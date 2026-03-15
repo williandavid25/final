@@ -1,11 +1,11 @@
-name = "final"
+name = "mi-pagina-web"
 compatibility_date = "2024-09-25"
 main = "worker/index.js"
 
-# [[d1_databases]]
-# binding = "DB"
-# database_name = "ellel-db"
-# database_id = "4d8e2ec6-e83a-4f64-94a1-e7369dad88d3"
+[[d1_databases]]
+binding = "DB"
+database_name = "ellel-db"
+database_id = "e9878183-e737-402f-b49e-4c9a5c54942a"
 
 [assets]
-directory = "./"
+directory = "./public"
